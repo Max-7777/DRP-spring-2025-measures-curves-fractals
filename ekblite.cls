@@ -6,7 +6,6 @@
 \RequirePackage{amsthm}
 \RequirePackage{amsmath}
 \RequirePackage[alphabetic]{amsrefs}
-\RequirePackage{stmaryrd}
 \RequirePackage{wasysym}
 \RequirePackage{mathrsfs}
 \RequirePackage[dvipsnames,svgnames,x11names]{xcolor}
