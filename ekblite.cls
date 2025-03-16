@@ -228,3 +228,4 @@
 
 
 \newcommand{\itemref}[1]{(\ref{#1})}
+\RequirePackage{xfrac}

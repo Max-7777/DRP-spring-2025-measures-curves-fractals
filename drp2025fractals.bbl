@@ -1,0 +1,37 @@
+% \bib, bibdiv, biblist are defined by the amsrefs package.
+\begin{bibdiv}
+\begin{biblist}
+
+\bib{falconer2}{book}{
+      author={Falconer, Kenneth},
+       title={Fractals. {A} very short introduction},
+    language={English},
+      series={Very Short Introd.},
+   publisher={Oxford: Oxford University Press},
+        date={2013},
+      volume={367},
+        ISBN={978-0-19-967598-2},
+}
+
+\bib{falconer1}{book}{
+      author={Falconer, K.~J.},
+       title={The geometry of fractal sets},
+    language={English},
+      series={Camb. Tracts Math.},
+   publisher={Cambridge University Press, Cambridge},
+        date={1985},
+      volume={85},
+}
+
+\bib{mandelbrot1}{book}{
+      author={Mandelbrot, Benoit~B.},
+       title={The fractal geometry of nature. {Rev}. ed. of ``{Fractals}'',
+  1977},
+    language={English},
+         how={San {Francisco}: {W}. {H}. {Freeman} and {Company}. 461 p.
+  (1982).},
+        date={1982},
+}
+
+\end{biblist}
+\end{bibdiv}
