@@ -29,12 +29,41 @@ Maxwell Seay and Aaron Huntley\\
 \newpage
 
 \section{Preface}
-\cite{mandelbrot1}
-\cite{falconer1}
+The goal is to find how to compute \textit{dimensionality}. I already know the \textit{dimensionality} of some things. I know the dimension of a point is 0, the dimension of a line is 1, the dimension of a square is 2, etc. But how is it calculated for some arbitrary object? In this case, by object, I mean:
+\\[0.2in]A set of points (finite or infinite), which is subset of some metric space $(X,d)$.
+\\[0.2in]Below are common examples of objects and their dimension.
+\begin{example}[Point]
+	A point is a single element of a metric space $X$. For example, any single number is a point in the metric space $\R$ (the real number line.) 
+	\[p_1 = \{1\}\]
+	\[p_2 = \{2\}\]
+	\[p_3 = \{3\}\]
+	\[p_4 = \{\pi\}\]
+	The above $p_1$, $p_2$, $p_3$, $p_4$ are examples of points inside the metric space $\R$. This object is known to have dimension 0. The set contains only one item, only one number.
+\end{example}
+\begin{example}[Unit line segment]
+	The unit line segment is a subset of $\R$, the real number line, defined as the set 
+	\[\{x : 0 \le x \le 1\}\]
+	In other words, the unit line segment is a set containing every real number between and including 0 and 1.
+	\\[0.2in]This object is known to have dimension 1. The set contains an uncountably infinite amount of real numbers.
+\end{example}
+\begin{example}[Unit square]
+	The unit square is a subset of $\R^2$, the Euclidean plane, defined as the set of points
+	\[\{(x,y) : 0 \le x \le 1, 0 \le y \le 1\}\]
+	In other words, the unit square is a set containing every real number inside a square.
+	\\[0.2in]This object is known to have dimension 2. The set contains an uncountably infinite amount of real numbers.
+\end{example}
+\begin{example}[Finite sets]
+	A point is a 0-dimensional element of a metric space. And the union of two points is also 0-dimensional.
+	\\[0.2in]Any finite set of points has dimension 0. More generally, any finite union of $m$-dimensional sets has dimension $m$. (Union is used to combine two sets into one bigger set. $\{a\} \cup \{b\} = \{a,b\}$).
+	\\[0.2in]The focus for this however is on weird sets. Sets that are made of $m$-dimensional objects but which are $n$-dimensional, where $m < n$. Somehow a set that breaks from one dimension into another. Already it can be seen one requirement of this strangeness:
+	\\[0.2in]The set must contain an infinite number of elements.
+	\\[0.2in]Finite sets are too well behaved. By the upcoming definitions of dimension, a finite union of objects with dimension $m$ will also still have dimension $m$. 
+\end{example}
+\begin{example}[The set $\{\sfrac{1}{n} : n \in \N \}$]
+	This set is an infinite set of points. It's more dense closer to 0 and less dense closer than 1. Near 1, it seems like a handful of 0-dimensional points. Near 0, it seems like a dense line.
+\end{example}
 \newpage
-\section{Notion of Length, Area, Volume $\dots$}
-\newpage
-\section{Notion of Dimension}
+\section{Notion of Dimension: Minkowski–Bouligand or box couting dimension}
 I would like to know how to determine the dimension of arbitrary objects. First I will look at simple examples to find out more about a notion of dimension.
 \begin{example}[Line segment]
 	I know what a line segment is. I also know every line segment is 1 dimensional.
@@ -66,7 +95,10 @@ And for the square we have that the number of squares of radius $r$ needed to co
 \[\mathcal{N}(r) = \frac{1}{r^2}\]
 From these couple examples it seems that, in general
 \[\mathcal{N}(r) = c \left(\frac{1}{r}\right)^d\]
-It seems that it would be appropriate to call the $d$ in this expression the dimension. This function $\mathcal{N}(r)$ is called a power law since $\sfrac{1}{r}$ is always raised to some power. \cite{falconer2}
+Where $c$ is a constant. It seems that it would be appropriate to call the $d$ in this expression the dimension. This function $\mathcal{N}(r)$ is called a power law since $\sfrac{1}{r}$ is always raised to some power. \cite{falconer2}
+
+\newpage
+\section{Notion of Dimension: Hausdorff dimension}
 \newpage
 \section{Cantor Set}
 	Let $\mathcal{C}$ be the Cantor Set.
@@ -113,11 +145,12 @@ It seems that it would be appropriate to call the $d$ in this expression the dim
 	\begin{corollary}
 		$\mathcal{C}_{i}$ is always a covering of $\mathcal{C}_{i+1}$ and also always a covering of $\mathcal{C}$.
 	\end{corollary}
+	\begin{proof}
+		Because it's like a contraction map. I guess that's a nice property of them, every subseqeuent set is a subset of the previous set.
+	\end{proof}
 
 \newpage
-\begin{theorem}[Theorem Example]
-        
-\end{theorem}
+\section{Dragon}
 
 \newpage
 \bibliography{citations}
