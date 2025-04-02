@@ -30,7 +30,7 @@ Maxwell Seay and Aaron Huntley\\
 
 \section{Preface}
 The goal is to find how to compute \textit{dimensionality}. I already know the \textit{dimensionality} of some things. I know the dimension of a point is 0, the dimension of a line is 1, the dimension of a square is 2, etc. But how is it calculated for some arbitrary object? In this case, by object, I mean:
-\\[0.2in]A set of points (finite or infinite), which is subset of some metric space $(X,d)$.
+\\[0.2in]A finite or infinite set of points $x$, where $x \subset \R^n$.
 \\[0.2in]Below are common examples of objects and their dimension.
 \begin{example}[Point]
 	A point is a single element of a metric space $X$. For example, any single number is a point in the metric space $\R$ (the real number line.) 
@@ -62,6 +62,7 @@ The goal is to find how to compute \textit{dimensionality}. I already know the \
 \begin{example}[The set $\{\sfrac{1}{n} : n \in \N \}$]
 	This set is an infinite set of points which lies on the interval $[0,1]$. It's more dense closer to 0 and less dense closer to 1. Near 0, it seems like a super dense line. Near 1, it seems like a handful of 0-dimensional points.
 	\\[0.2in]Regardless I think you can prove this set is of dimension 0 with Hausdorff.
+	\\[0.2in]Ok nevermind, Hausdorff measure/dimension is only applied to compact sets. (Equivalently closed and bounded since in $\R^n$.)
 \end{example}
 \newpage
 \section{Notion of Dimension: Minkowski–Bouligand or box-counting dimension}
