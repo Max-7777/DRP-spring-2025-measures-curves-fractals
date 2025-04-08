@@ -29,6 +29,10 @@ Maxwell Seay and Aaron Huntley\\
 \newpage
 
 \section{Preface}
+This was written by Max Seay of CWRU with direction from PhD student Aaron Huntley, as part of the Directed Reading Program in Spring 2025. As of writing, it has not been proofread.
+
+\newpage
+\section{Introduction}
 The goal is to find how to compute \textit{dimensionality}. I already know the \textit{dimensionality} of some things. I know the dimension of a point is 0, the dimension of a line is 1, the dimension of a square is 2, etc. But how is it calculated for some arbitrary object? In this case, by object, I mean:
 \\[0.2in]A finite or infinite \textit{compact} set of points $x$, where $x \subset \R^n$.
 \\[0.2in] \cite{edgar} applies Hausdorff measure (and probably other things) to compact sets in $\R^n$ only. From what I've read the other sources make the same assumption.
@@ -60,9 +64,12 @@ The goal is to find how to compute \textit{dimensionality}. I already know the \
 	\\[0.2in]The set must contain an infinite number of elements.
 	\\[0.2in]Finite sets are too well behaved. By the upcoming definitions of dimension, a finite union of objects with dimension $m$ will also still have dimension $m$. 
 \end{example}
+
+
+
 \newpage
 \section{Notion of Dimension: Minkowski–Bouligand or box-counting dimension}
-I would like to know how to determine the dimension of arbitrary objects. First I will look at simple examples to find out more about a notion of dimension.
+I would like to know how to estimate the dimension of arbitrary objects. First I will look at simple examples to find out more about the notion of dimension.
 \begin{example}[Line segment]
 	I know what a line segment is. I also know every line segment is 1 dimensional.
 	\\[0.2in]I take an approximation. I will cover a line segment with boxes. Each box has diameter (or radius) $r$. (To me it doesn't matter much since the difference between radius and diameter is always just a factor of 2.)
@@ -143,10 +150,14 @@ Where $c$ is a constant. It seems that it would be appropriate to call the $d$ i
 	\begin{corollary}
 		$\mathcal{C}_{i}$ is always a covering of $\mathcal{C}_{i+1}$ and also always a covering of $\mathcal{C}$.
 	\end{corollary}
-	\begin{proof}
-		Because it's like a contraction map. I guess that's a nice property of them, every subseqeuent set is a subset of the previous set.
-	\end{proof}
-
+	\includegraphics[scale=0.2]{img/c1.jpg}
+	\\Cantor Set visualized in 2D with 10 iterations. For each interval $[a,b]$, there is a colored box positioned at $(a,a)$ with size $(3^{-k}, 3^{-k})$, where $k$ is the iteration. 
+	\\[0.2in]\includegraphics[scale=0.2]{img/c2.jpg}
+	\\A set visualized in 2D with 10 iterations constructed the same way as the Cantor Set. However the $\frac{1}{3}$ in the Cantor Set definition is replaced with $\frac{1}{2}$ instead. 
+	\\[0.2in]\includegraphics[scale=0.2]{img/c3.jpg}
+	\\A set visualized in 2D with 10 iterations constructed the same way as the Cantor Set. However the $\frac{1}{3}$ in the Cantor Set definition is replaced with $\frac{3}{4}$ instead. 
+	\\[0.2in]\includegraphics[scale=0.2]{img/c4.jpg}
+	\\A set visualized in 2D with 10 iterations constructed the same way as the Cantor Set. However the $\frac{1}{3}$ in the Cantor Set definition is replaced with $\frac{4}{5}$ instead. 
 \newpage
 \section{Dragon}
 
