@@ -35,40 +35,70 @@ This was written by Max Seay of CWRU with direction from PhD student Aaron Huntl
 \section{Introduction}
 The goal is to find how to compute \textit{dimensionality}. I already know the \textit{dimensionality} of some things. I know the dimension of a point is 0, the dimension of a line is 1, the dimension of a square is 2, etc. But how is it calculated for some arbitrary object? In this case, by object, I mean:
 \\[0.2in]A finite or infinite \textit{compact} set of points $x$, where $x \subset \R^n$.
-\\[0.2in] \cite{edgar} applies Hausdorff measure (and probably other things) to compact sets in $\R^n$ only. From what I've read the other sources make the same assumption.
 \\[0.2in]Below are common examples of objects and their dimension.
-\begin{example}[Point]
-	A point is a single element of a metric space $X$. For example, any single number is a point in the metric space $\R$ (the real number line.) 
-	\[p_1 = \{1\}\]
-	\[p_2 = \{2\}\]
-	\[p_3 = \{3\}\]
-	\[p_4 = \{\pi\}\]
-	The above $p_1$, $p_2$, $p_3$, $p_4$ are examples of points inside the metric space $\R$. This object is known to have dimension 0. The set contains only one item, only one number.
-\end{example}
-\begin{example}[Unit line segment]
-	The unit line segment is a subset of $\R$, the real number line, defined as the set 
-	\[\{x : 0 \le x \le 1\}\]
-	In other words, the unit line segment is a set containing every real number between and including 0 and 1.
-	\\[0.2in]This object is known to have dimension 1. The set contains an uncountably infinite amount of real numbers.
-\end{example}
-\begin{example}[Unit square]
-	The unit square is a subset of $\R^2$, the Euclidean plane, defined as the set of points
-	\[\{(x,y) : 0 \le x \le 1, 0 \le y \le 1\}\]
-	In other words, the unit square is a set containing every real number inside a square.
-	\\[0.2in]This object is known to have dimension 2. The set contains an uncountably infinite amount of real numbers.
-\end{example}
-\begin{example}[Finite sets]
-	A point is a 0-dimensional element of a metric space. And the union of two points is also 0-dimensional.
-	\\[0.2in]Any finite set of points has dimension 0. More generally, any finite union of $m$-dimensional sets has dimension $m$. (Union is used to combine two sets into one bigger set. $\{a\} \cup \{b\} = \{a,b\}$).
-	\\[0.2in]The focus for this however is on weird sets. Sets that are made of $m$-dimensional objects but which are $n$-dimensional, where $m < n$. Somehow a set that breaks from one dimension into another. Already it can be seen one requirement of this strangeness:
-	\\[0.2in]The set must contain an infinite number of elements.
-	\\[0.2in]Finite sets are too well behaved. By the upcoming definitions of dimension, a finite union of objects with dimension $m$ will also still have dimension $m$. 
-\end{example}
-
-
 
 \newpage
 \section{How to measure the real numbers}
+On the real number line a few common objects can be defined. For example:
+\begin{example}[Point]
+	A point on the real number line is a single real number. A point is a thing $x$ such that $x \in \R$. Examples include: $1,2,3,17,\sqrt{2},\pi$.
+	\\[0.2in]The dimensionality of a point is commonly known to be 0. A point can't have length.
+\end{example}
+\begin{example}[Line segment]
+	A line segment on the real number line is the defined to be the set of all real numbers that lie between two points. A line segment that starts at 0 and reaches 1 would be defined as the set
+	\[\{x : 0 \le x \le 1\}\] 
+	In other words, a set containing every real number between and including 0 and 1.
+	\\[0.2in]A line segment is $\textit{closed}$ if it contains its end points. A line segment is $\textit{open}$ if it doesn't contain its end points.
+	\\[0.2in]The dimensionality of a line is commonly known to be 1. And most line segments can be measured by finding the distance between the two points.  
+	\\[0.2in]Line segments are also called $\textit{intervals}$.
+\end{example}
+\begin{example}[Finite set of points]
+	A finite collection of points lying on the real number line. Only a single point alone has 0 dimensionality. Two points together also has 0 dimensionality. Combine any finite number of points and this combination will be 0 dimensional. A collection of 10 billion points is 0-dimensional, no matter what.
+\end{example}
+Is there a way to generalize this idea of measuring things on the real number line? Given any strange and arbitrary set of numbers, how should it be measured?
+
+\begin{example}[Stick cutting]
+	Let there be some stick $s$ to measure. Say the stick begins at a length of 1. Now do the following:
+	\\[0.2in]Cut the stick to $\frac{1}{2}$ its original length. Then take the stick and cut it to $\frac{1}{3}$ its original length. Then cut the stick to $\frac{1}{4}$ its original length. Continue this forever. In the end how long is the resulting stick?
+	\\\includegraphics[scale=0.3]{img/c5.jpg}
+	\\[0.2in]On one hand, the stick is cut forever, so it must be reduced to nothing by the end. On the other hand, the amount that gets cut off the stick decreases overtime and so at some point there may be none cut off at all.
+	\begin{corollary}
+		The length of the stick after it's been through the cutting process is 0. 
+	\end{corollary}
+	To prove this, I will show that given any real number $x$, the length of the stick is less than $x$. Thus the length must be 0.
+	\begin{proof}
+		Let the stick be an interval (line segment). Let $s_0$ be the initial stick; a closed interval $[0,1]$.
+		\\[0.2in]Step $1$ is to cut the interval in half. So the interval becomes $\left[0,\frac{1}{2}\right]$.
+		\\[0.2in]Step $2$ is to cut the interval into a third. So the interval becomes $\left[0,\frac{1}{3}\right]$.
+		\\[0.2in]Step $3$ is to cut the interval into a fourth. So the interval becomes $\left[0,\frac{1}{4}\right]$.
+		\\[0.2in]Step $k$ is to cut the interval $\left[0,\frac{1}{k}\right]$ into the interval $\left[0,\frac{1}{k+1}\right]$.
+		\\[0.2in]After every step of the cutting process, the stick is cut; the length of the interval is decreased. This can be seen by comparing the lengths of the stick before and after some cutting step $k$:
+		\[\left| 0 - \frac{1}{k+1} \right| \le \left| 0 - \frac{1}{k} \right|\] 
+		\\[0.2in]Let $\varepsilon \in \R^+$ be some arbitrary positive real number.
+		\\[0.2in]I will show that there always exists a cutting step $k'$ such that after this step, the length of the stick is less than the arbitrarily small $\varepsilon$. 
+		\\[0.2in]Choose the $k'$ step to be a whole number such that
+		\[k' > \frac{1}{\varepsilon}\]
+		(By the archimedian principle this is always possible.)
+		\\[0.2in]I know that by definition of the cutting process, for this step $k'$, the stick is cut to a length $l$ that is
+		\[l \le \frac{1}{k'}\] 
+		And note that by the definition of $k'$ we have that
+		\[l \le \frac{1}{k'} < \frac{1}{\sfrac{1}{\varepsilon}} = \varepsilon\]
+		Or simply
+		\[l < \epsilon\]
+		Since the length of the stick $l$ at some step $k'$ is always less than $\varepsilon$, and $\varepsilon$ can be made arbitrarily small, it must be true that 
+		\[l = 0\] 
+		As required.
+	\end{proof}
+\end{example}
+
+\subsection{Lebesgue measure}
+A common way of measuring an object is to tighly cover it with something. The object's measure should be similar to that of the covering.
+\\[0.2in]Like to measure the surface area of a sphere, tighly wrap a blanket around it so that it covers the sphere, then measure the blanket. This covering idea is often a part of definitions of measure and dimension.
+\\[0.2in]In this case, (Lebesgue measure on the real number line), the covering is made from intervals. The covering of intervals tightly cover the object. The sum of the lengths of intervals is approximately the measure of the object itself.
+\begin{definition}[Lebesgue measure]
+	
+\end{definition}
+
 \newpage
 \section{Notion of dimension: Minkowski–Bouligand or box-counting dimension}
 I would like to know how to estimate the dimension of arbitrary objects. First I will look at simple examples to find out more about the notion of dimension.
@@ -118,9 +148,6 @@ Where $c$ is a constant. It seems that it would be appropriate to call the $d$ i
 		\\
 		And the recursive definition for a set $\mathcal{C}_i$ is:
 		\[\mathcal{C}_i = \frac{1}{3} \mathcal{C}_{i-1} \cup \frac{2}{3} + \frac{1}{3} \mathcal{C}_{i-1}\]
-		Or an alternate (non-recursive) definition for a set $\mathcal{C}_i$ is:
-		\[\mathcal{C}_i = \bigcup_{j=0}^{i-1} \frac{2j}{3^{i-1}} + \left[j\frac{1}{3^i}, (j+1)\frac{1}{3^i}\right] \cup \left[(j+2)\frac{1}{3^i}, (j+3)\frac{1}{3^i}\right]\]
-		(idk I just came up with this. I think it works.)
 	\end{definition}
 	\begin{corollary}
 		$\mathcal{C}_i \ne \mathcal{C}$ for all $i \in \mathbb{N}$. No set in the sequence $\{\mathcal{C}_i\}$ is the Cantor Set, however the further you go (the larger the $i$), the ``closer'' $\mathcal{C}_i$ becomes $\mathcal{C}$. 
