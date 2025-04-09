@@ -25,7 +25,6 @@
 \usetikzlibrary{cd}
 \usetikzlibrary{decorations.pathmorphing}
 \usetikzlibrary{arrows, decorations.markings}
-\pagenumbering{gobble}
 \renewcommand{\datename}{\textit{Date}:}
 \usepackage{marginnote}
 
