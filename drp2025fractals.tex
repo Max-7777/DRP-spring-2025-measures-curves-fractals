@@ -70,8 +70,10 @@ On the real number line some common objects can be defined. For example:
 \begin{definition}[Interval length]
 	Given an interval $I$ of the form $[a,b]$, $(a,b)$, $(a,b]$, or $[a,b)$ where $a < b$, the length of $I$ is 
 	\[b - a\]
+	and
+	\[|I| := b - a\]
 \end{definition}
-This is logical and useful. But how can this be justified with some definition of measure? And how can the idea of length be defined in a more general way? 
+This is intuitive and useful. But how can this be justified with some definition of measure? And how can the idea of length be defined in a more general way? 
 \\[0.2in]Most definitions of measure and dimension involve the idea of a $\textit{covering}$.
 \\[0.2in]A $\textit{covering}$ is some collection of sets that cover some other set. If the covering is made from open sets, it's called an open covering.
 \begin{example}[Open covering for an interval]
@@ -80,8 +82,8 @@ This is logical and useful. But how can this be justified with some definition o
 	since 
 	\[I \subseteq \bigcup_{i=1}^{3} C_i\]
 	and every set $C_i$ in $C$ is open.
-	\\[0.2in]You could say that $C$ is ``overkill'' as an open cover for $I$ since it spans a much longer length than $I$. In this case, the length of $I$ is simply
-	\[3 - 1 = 2\]
+	\\[0.2in]You could say that $C$ is ``overkill'' as an open cover for $I$ since it spans a much longer length than $I$. In this case, the length of $I$ is
+	\[|I| = 3 - 1 = 2\]
 	and the length of the open cover $\bigcup_{i=1}^{3} C_i$ is
 	\[100 - (-50) = 150\]
 \end{example}
@@ -93,12 +95,28 @@ This is logical and useful. But how can this be justified with some definition o
 	\\[0.2in]Unfortunately this question doesn't make sense. There is no ``end'' to the cutting process since it goes on forever. First the object should be defined in a valid way. Say $s_0$ is the stick before cutting, $s_1$ is the stick at the first cutting step etc. We can define what we want to measure as:
 	\[\bigcap_{i=0}^{\infty} s_i\]
 	In other words, the intersection of every stick. Now there is no longer any ambiguity. The object to be measured is the set of points that are inside each and every stick $s_i$.
-	\\[0.2in]Another object which represents the length of the stick is
+	\\[0.2in]Another object which represents this length value is
 	\[\lim_{i \rightarrow \infty} |s_i|\]
-	\\In other words, the length of each stick of the sequence as it goes towards infinity.
+	\\where $s_i$ = $[0,\frac{1}{i+1}]$ represents the stick after step $i$ of the cutting process.	
+	\\[0.2in]In other words, the length of each stick in the sequence as the sequence tends towards infinity.
+	\\[0.2in]On one hand, the stick is cut forever, so it must be reduced to nothing by the end. On the other hand, the amount that gets cut off decreases each time and so at some point there may be no more cut off at all.
 	\\\includegraphics[scale=0.33]{img/c5.jpg}
 	\\\textit{Diagram of the first 9 steps of stick cutting.}
-	\\[0.2in]On one hand, the stick is cut forever, so it must be reduced to nothing by the end. On the other hand, the amount that gets cut off decreases each time and so at some point there may be no more cut off at all.
+	\begin{corollary}
+	\[\lim_{i \rightarrow \infty} |s_i| = 0\]
+	where $s_i$ = $[0,\frac{1}{i+1}]$ represents the stick after step $i$ of the cutting process.	
+	\end{corollary}
+	\begin{proof}
+		Rewrite the limit: 
+		\[\lim_{i \rightarrow \infty} |s_i| = \lim_{i \rightarrow \infty} \left(\frac{1}{i+1} - 0 \right)\]
+		by the definition of length and the intervals. So we have
+		\[\lim_{i \rightarrow \infty} |s_i| = \lim_{i \rightarrow \infty} \left(\frac{1}{i+1} - 0 \right)= \lim_{i \rightarrow \infty} \left(\frac{1}{i+1} \right)\]
+		This is a common limit known to be
+		\[\lim_{i \rightarrow \infty} \left(\frac{1}{i+1} \right) = 0\]
+		Thus we have that
+		\[\lim_{i \rightarrow \infty} |s_i| = 0\]
+		as required.
+	\end{proof}
 	\begin{corollary}
 		The length of $\cap_{i=1}^{\infty} s_i$ is 0. 
 	\end{corollary}
