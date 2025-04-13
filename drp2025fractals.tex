@@ -20,7 +20,7 @@ pdfauthor = {Max Seay and Aaron Huntley}
 DRP spring 2025}
 \maketitle
 \begin{center}
-Maxwell Seay and Aaron Huntley\\
+	Max Seay and Aaron Huntley\\
 \today
 \end{center}
 
@@ -33,40 +33,71 @@ This was written by Max Seay of CWRU with direction from PhD student Aaron Huntl
 
 \newpage
 \section{Introduction}
-The goal is to find how to compute \textit{dimensionality}. I already know the \textit{dimensionality} of some things. I know the dimension of a point is 0, the dimension of a line is 1, the dimension of a square is 2, etc. But how is it calculated for some arbitrary object? In this case, by object, I mean:
-\\[0.2in]A finite or infinite \textit{compact} set of points $x$, where $x \subset \R^n$.
-\\[0.2in]Below are common examples of objects and their dimension.
+The goal is to find how to compute the \textit{dimensionality} of some given object. I already know the \textit{dimensionality} of some certain objects. I know the dimension of a point is 0, the dimension of a line is 1, the dimension of a square is 2, etc. But how is dimensionality calculated for some arbitrary object? In this case, by object, I mean:
+\\[0.2in]A finite or infinite \textit{compact} set of points $S$, where $S \subset \R^n$.
+\\[0.2in]Below are common examples of objects (sets) and their dimensionality.
+\begin{itemize}
+	\item $\{0\}$ \\[0.1in] dimensionality: 0
+	\item $\{1\}$ \\[0.1in] dimensionality: 0
+	\item $\{2,4,6,8\}$ \\[0.1in] dimensionality: 0
+	\item $[0,1]$ \\[0.1in] dimensionality: 1
+	\item $(0,1)$ \\[0.1in] dimensionality: 1
+	\item $(0,1]$ \\[0.1in] dimensionality: 1
+	\item  $[0,1] \times [0,1]$ \\[0.1in] dimensionality: 2
+\end{itemize}
 
 \newpage
 \section{How to measure the real numbers}
-On the real number line a few common objects can be defined. For example:
+On the real number line some common objects can be defined. For example:
 \begin{example}[Point]
-	A point on the real number line is a single real number. A point is a thing $x$ such that $x \in \R$. Examples include: $1,2,3,17,\sqrt{2},\pi$.
+	A point on the real number line is a single real number. Examples include: $1,2,3,17,\sqrt{2},\pi$.
 	\\[0.2in]The dimensionality of a point is commonly known to be 0. A point can't have length.
 \end{example}
 \begin{example}[Line segment]
 	A line segment on the real number line is the defined to be the set of all real numbers that lie between two points. A line segment that starts at 0 and reaches 1 would be defined as the set
 	\[\{x : 0 \le x \le 1\}\] 
+	equivalently expressed in \textit{interval} form:
+	\[[0,1]\]
 	In other words, a set containing every real number between and including 0 and 1.
-	\\[0.2in]A line segment is $\textit{closed}$ if it contains its end points. A line segment is $\textit{open}$ if it doesn't contain its end points.
 	\\[0.2in]The dimensionality of a line is commonly known to be 1. The length of a line segment of the form 
 	\[[a,b]\]
-	can be measured by computing $b - a$.  
-	\\[0.2in]Line segments are also called $\textit{intervals}$.
 \end{example}
+
 \begin{example}[Finite set of points]
 	A finite collection of points lying on the real number line. Only a single point alone has 0 dimensionality. Two points together also has 0 dimensionality. Combine any finite number of points and this combination will be 0 dimensional. A collection of 10 billion points is 0-dimensional, no matter what.
 \end{example}
-Is there a way to generalize this idea of measuring things on the real number line? Given any strange and arbitrary set of numbers, how should it be measured?
+
+\begin{definition}[Interval length]
+	Given an interval $I$ of the form $[a,b]$, $(a,b)$, $(a,b]$, or $[a,b)$ where $a < b$, the length of $I$ is 
+	\[b - a\]
+\end{definition}
+This is logical and useful. But how can this be justified with some definition of measure? And how can the idea of length be defined in a more general way? 
+\\[0.2in]Most definitions of measure and dimension involve the idea of a $\textit{covering}$.
+\\[0.2in]A $\textit{covering}$ is some collection of sets that cover some other set. If the covering is made from open sets, it's called an open covering.
+\begin{example}[Open covering for an interval]
+	Let $I = [1,3]$. An example of an open cover for $I$ is
+	\[C = \{(-50,0),(-20,70),(50,100)\}\]
+	since 
+	\[I \subseteq \bigcup_{i=1}^{3} C_i\]
+	and every set $C_i$ in $C$ is open.
+	\\[0.2in]You could say that $C$ is ``overkill'' as an open cover for $I$ since it spans a much longer length than $I$. In this case, the length of $I$ is simply
+	\[3 - 1 = 2\]
+	and the length of the open cover $\bigcup_{i=1}^{3} C_i$ is
+	\[100 - (-50) = 150\]
+\end{example}
 
 \begin{example}[Stick cutting]
 	Let there be some stick $s$ to measure. Say the stick begins at a length of 1. Now do the following:
 	\\[0.2in]Cut the stick to $\frac{1}{2}$ its original length. Then take the stick and cut it to $\frac{1}{3}$ its original length. Then cut the stick to $\frac{1}{4}$ its original length. Continue this forever.
 	\\[0.2in]At the end of the cutting process, how long is the stick?
-	\\[0.2in]First the object to be measured should be defined in a valid way. The stick at the "end of the cutting process" doesn't exist, since the cutting process goes on forever. Say $s_0$ is the stick before cutting, $s_1$ is the stick at the first cutting step etc. We can define what we want to measure as:
+	\\[0.2in]Unfortunately this question doesn't make sense. There is no ``end'' to the cutting process since it goes on forever. First the object should be defined in a valid way. Say $s_0$ is the stick before cutting, $s_1$ is the stick at the first cutting step etc. We can define what we want to measure as:
 	\[\bigcap_{i=0}^{\infty} s_i\]
 	In other words, the intersection of every stick. Now there is no longer any ambiguity. The object to be measured is the set of points that are inside each and every stick $s_i$.
-	\\\includegraphics[scale=0.3]{img/c5.jpg}
+	\\[0.2in]Another object which represents the length of the stick is
+	\[\lim_{i \rightarrow \infty} |s_i|\]
+	\\In other words, the length of each stick of the sequence as it goes towards infinity.
+	\\\includegraphics[scale=0.33]{img/c5.jpg}
+	\\\textit{Diagram of the first 9 steps of stick cutting.}
 	\\[0.2in]On one hand, the stick is cut forever, so it must be reduced to nothing by the end. On the other hand, the amount that gets cut off decreases each time and so at some point there may be no more cut off at all.
 	\begin{corollary}
 		The length of $\cap_{i=1}^{\infty} s_i$ is 0. 
@@ -96,7 +127,11 @@ Is there a way to generalize this idea of measuring things on the real number li
 		As required.
 	\end{proof}
 \end{example}
-
+\newpage
+\begin{figure}
+	\includegraphics[scale=0.3]{img/c6.jpg}
+	\caption{The sequence of construction of some intervals. On each step, each interval is cut and half and the right half is moved towards the right.}
+\end{figure}
 \subsection{Lebesgue measure}
 A common way of measuring an object is to tighly cover it with something. The object's measure should be similar to that of the covering.
 \\[0.2in]Like to measure the surface area of a sphere, tighly wrap a blanket around it so that it covers the sphere, then measure the blanket. This covering idea is often a part of definitions of measure and dimension.
@@ -185,14 +220,20 @@ Where $c$ is a constant. It seems that it would be appropriate to call the $d$ i
 	\begin{corollary}
 		$\mathcal{C}_{i}$ is always a covering of $\mathcal{C}_{i+1}$ and also always a covering of $\mathcal{C}$.
 	\end{corollary}
-	\includegraphics[scale=0.2]{img/c1.jpg}
-	\\Cantor Set visualized in 2D with 10 iterations. For each interval $[a,b]$ of the set, there is a colored box positioned at $(a,a)$ with size $(3^{-k}, 3^{-k})$, where $k$ is the iteration. 
-	\\[0.2in]\includegraphics[scale=0.2]{img/c2.jpg}
-	\\A set visualized in 2D with 10 iterations constructed the same way as the Cantor Set. However the $\frac{1}{3}$ in the Cantor Set definition is replaced with $\frac{1}{2}$ instead. 
-	\\[0.2in]\includegraphics[scale=0.2]{img/c3.jpg}
-	\\A set visualized in 2D with 10 iterations constructed the same way as the Cantor Set. However the $\frac{1}{3}$ in the Cantor Set definition is replaced with $\frac{3}{4}$ instead. 
-	\\[0.2in]\includegraphics[scale=0.2]{img/c4.jpg}
-	\\A set visualized in 2D with 10 iterations constructed the same way as the Cantor Set. However the $\frac{1}{3}$ in the Cantor Set definition is replaced with $\frac{4}{5}$ instead. 
+	\newpage
+	\begin{figure}
+		\includegraphics[scale=0.2]{img/c8.jpg}
+		\caption{A set visualized in 2D with 10 iterations constructed the same way as the Cantor Set. However the $\frac{1}{3}$ in the Cantor Set definition is replaced with $\frac{1}{2}$ instead.}
+	\end{figure}
+	\begin{figure}
+		\includegraphics[scale=0.2]{img/c7.jpg}
+		\caption{A set visualized in 2D with 10 iterations constructed the same way as the Cantor Set. However the $\frac{1}{3}$ in the Cantor Set definition is replaced with $\frac{3}{4}$ instead.}
+	\end{figure}
+	\begin{figure}
+		\includegraphics[scale=0.2]{img/c9.jpg}
+		\caption{A set visualized in 2D with 10 iterations constructed the same way as the Cantor Set. However the $\frac{1}{3}$ in the Cantor Set definition is replaced with $\frac{4}{5}$ instead.}
+	\end{figure}
+	test
 \newpage
 \section{Dragon}
 
