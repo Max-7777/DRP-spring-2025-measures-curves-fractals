@@ -59,18 +59,13 @@ On the real number line some common objects can be defined. For example:
 	equivalently expressed in \textit{interval} form:
 	\[[0,1]\]
 	In other words, a set containing every real number between and including 0 and 1.
-	\\[0.2in]The dimensionality of a line is commonly known to be 1. The length of a line segment of the form 
-	\[[a,b]\]
-\end{example}
-
-\begin{example}[Finite set of points]
-	A finite collection of points lying on the real number line. Only a single point alone has 0 dimensionality. Two points together also has 0 dimensionality. Combine any finite number of points and this combination will be 0 dimensional. A collection of 10 billion points is 0-dimensional, no matter what.
+	\\[0.2in]The dimensionality of a line is commonly known to be 1. 
 \end{example}
 
 \begin{definition}[Interval length]
 	Given an interval $I$ of the form $[a,b]$, $(a,b)$, $(a,b]$, or $[a,b)$ where $a < b$, the length of $I$ is 
 	\[b - a\]
-	and
+	and notation
 	\[|I| := b - a\]
 \end{definition}
 This is intuitive and useful. But how can this be justified with some definition of measure? And how can the idea of length be defined in a more general way? 
@@ -82,10 +77,10 @@ This is intuitive and useful. But how can this be justified with some definition
 	since 
 	\[I \subseteq \bigcup_{i=1}^{3} C_i\]
 	and every set $C_i$ in $C$ is open.
-	\\[0.2in]You could say that $C$ is ``overkill'' as an open cover for $I$ since it spans a much longer length than $I$. In this case, the length of $I$ is
-	\[|I| = 3 - 1 = 2\]
-	and the length of the open cover $\bigcup_{i=1}^{3} C_i$ is
+	\\[0.2in]You could say that $C$ is ``overkill'' as an open cover for $I$ since it spans a much longer length than $I$. In this case, the length of the open cover $\bigcup_{i=1}^{3} C_i$ is
 	\[100 - (-50) = 150\]
+	and the length of $I$ is
+	\[3 - 1 = 2\]
 \end{example}
 
 \begin{example}[Stick cutting]
@@ -102,6 +97,9 @@ This is intuitive and useful. But how can this be justified with some definition
 	\\[0.2in]On one hand, the stick is cut forever, so it must be reduced to nothing by the end. On the other hand, the amount that gets cut off decreases each time and so at some point there may be no more cut off at all.
 	\\\includegraphics[scale=0.33]{img/c5.jpg}
 	\\\textit{Diagram of the first 9 steps of stick cutting.}
+	\begin{corollary}
+		For each stick $s_i$ in the sequence of sticks $\{s_i\}_{i=1}^{\infty}$, $s_{i} \subset s_{i-1}$. Each stick $s_i$ is covered by stick $s_{i-1}$. 
+		\end{corollary}
 	\begin{corollary}
 	\[\lim_{i \rightarrow \infty} |s_i| = 0\]
 	where $s_i$ = $[0,\frac{1}{i+1}]$ represents the stick after step $i$ of the cutting process.	
