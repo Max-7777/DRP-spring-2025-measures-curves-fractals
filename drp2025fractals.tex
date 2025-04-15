@@ -83,13 +83,16 @@ This is intuitive and useful. But how can this be justified with some definition
 	\[3 - 1 = 2\]
 \end{example}
 
+\subsection{Definitions with infinite sets}
+
 \begin{example}[Stick cutting]
 	Let there be some stick $s$ to measure. Say the stick begins at a length of 1. Now do the following:
 	\\[0.2in]Cut the stick to $\frac{1}{2}$ its original length. Then take the stick and cut it to $\frac{1}{3}$ its original length. Then cut the stick to $\frac{1}{4}$ its original length. Continue this forever.
 	\\[0.2in]At the end of the cutting process, how long is the stick?
-	\\[0.2in]Unfortunately this question doesn't make sense. There is no ``end'' to the cutting process since it goes on forever. First the object should be defined in a valid way. Say $s_0$ is the stick before cutting, $s_1$ is the stick at the first cutting step etc. We can define what we want to measure as:
+	\\[0.2in]Unfortunately this question doesn't make sense. There is no ``end'' to the cutting process since it goes on forever. First the object should be defined in a valid way. Say $s_0$ is the stick before cutting, $s_1$ is the stick at the first cutting step etc.
+	\\[0.2in]A valid definition of the object to be measured is:
 	\[\bigcap_{i=0}^{\infty} s_i\]
-	In other words, the intersection of every stick. Now there is no longer any ambiguity. The object to be measured is the set of points that are inside each and every stick $s_i$.
+	In other words, the intersection of every stick. The object to be measured is the set of points that are inside each and every stick $s_i$. Now there is no longer any ambiguity.
 	\\[0.2in]Another object which represents this length value is
 	\[\lim_{i \rightarrow \infty} |s_i|\]
 	\\where $s_i$ = $[0,\frac{1}{i+1}]$ represents the stick after step $i$ of the cutting process.	
@@ -148,17 +151,17 @@ This is intuitive and useful. But how can this be justified with some definition
 	\includegraphics[scale=0.3]{img/c6.jpg}
 	\caption{The sequence of construction of some intervals. On each step, each interval is cut and half and the right half is moved towards the right.}
 \end{figure}
-\subsection{Lebesgue measure}
 A common way of measuring an object is to tighly cover it with something. The object's measure should be similar to that of the covering.
 \\[0.2in]Like to measure the surface area of a sphere, tighly wrap a blanket around it so that it covers the sphere, then measure the blanket. This covering idea is often a part of definitions of measure and dimension.
-\\[0.2in]In this case, (Lebesgue measure on the real number line), the covering is made from intervals. The covering of intervals tightly cover the object. The sum of the lengths of intervals is approximately the measure of the object itself.
+\subsection{Lebesgue measure}
+Lebesgue measure on the real number line is a method of measuring an object in $\R$ by covering with intervals. The covering of intervals tightly cover the object. The sum of the lengths of intervals is approximately the measure of the object itself.
 \begin{definition}[Lebesgue measure]
 	
 \end{definition}
 
 \newpage
 \section{Notion of dimension: Minkowski–Bouligand or box-counting dimension}
-I would like to know how to estimate the dimension of arbitrary objects. First I will look at simple examples to find out more about the notion of dimension.
+I would like to know how to estimate the dimension of arbitrary objects on the plane $\R^2$. First I will look at simple examples to find out more about the notion of dimension in 2D space.
 \begin{example}[Line segment]
 	I know what a line segment is. I also know every line segment is 1 dimensional.
 	\\[0.2in]I take an approximation. I will cover a line segment with boxes. Each box has diameter (or radius) $r$. (To me it doesn't matter much since the difference between radius and diameter is always just a factor of 2.)
@@ -249,7 +252,6 @@ Where $c$ is a constant. It seems that it would be appropriate to call the $d$ i
 		\includegraphics[scale=0.2]{img/c9.jpg}
 		\caption{A set visualized in 2D with 10 iterations constructed the same way as the Cantor Set. However the $\frac{1}{3}$ in the Cantor Set definition is replaced with $\frac{4}{5}$ instead.}
 	\end{figure}
-	test
 \newpage
 \section{Dragon}
 
