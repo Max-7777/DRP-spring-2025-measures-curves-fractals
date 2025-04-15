@@ -48,6 +48,10 @@ The goal is to find how to compute the \textit{dimensionality} of some given obj
 
 \newpage
 \section{How to measure the real numbers}
+\begin{figure}[h]
+	\includegraphics[scale=0.3]{img/c10.jpg}
+	\caption{A few points and line segments living in the real number line $\R$.}
+\end{figure}
 On the real number line some common objects can be defined. For example:
 \begin{example}[Point]
 	A point on the real number line is a single real number. Examples include: $1,2,3,17,\sqrt{2},\pi$.
@@ -69,6 +73,7 @@ On the real number line some common objects can be defined. For example:
 	\[|I| := b - a\]
 \end{definition}
 This is intuitive and useful. But how can this be justified with some definition of measure? And how can the idea of length be defined in a more general way? 
+\subsection{Coverings}
 \\[0.2in]Most definitions of measure and dimension involve the idea of a $\textit{covering}$.
 \\[0.2in]A $\textit{covering}$ is some collection of sets that cover some other set. If the covering is made from open sets, it's called an open covering.
 \begin{example}[Open covering for an interval]
@@ -147,7 +152,7 @@ This is intuitive and useful. But how can this be justified with some definition
 	\end{proof}
 \end{example}
 \newpage
-\begin{figure}
+\begin{figure}[h]
 	\includegraphics[scale=0.3]{img/c6.jpg}
 	\caption{The sequence of construction of some intervals. On each step, each interval is cut and half and the right half is moved towards the right.}
 \end{figure}
@@ -240,15 +245,15 @@ Where $c$ is a constant. It seems that it would be appropriate to call the $d$ i
 		$\mathcal{C}_{i}$ is always a covering of $\mathcal{C}_{i+1}$ and also always a covering of $\mathcal{C}$.
 	\end{corollary}
 	\newpage
-	\begin{figure}
+	\begin{figure}[h]
 		\includegraphics[scale=0.2]{img/c8.jpg}
 		\caption{A set visualized in 2D with 10 iterations constructed the same way as the Cantor Set. However the $\frac{1}{3}$ in the Cantor Set definition is replaced with $\frac{1}{2}$ instead.}
 	\end{figure}
-	\begin{figure}
+	\begin{figure}[h]
 		\includegraphics[scale=0.2]{img/c7.jpg}
 		\caption{A set visualized in 2D with 10 iterations constructed the same way as the Cantor Set. However the $\frac{1}{3}$ in the Cantor Set definition is replaced with $\frac{3}{4}$ instead.}
 	\end{figure}
-	\begin{figure}
+	\begin{figure}[h]
 		\includegraphics[scale=0.2]{img/c9.jpg}
 		\caption{A set visualized in 2D with 10 iterations constructed the same way as the Cantor Set. However the $\frac{1}{3}$ in the Cantor Set definition is replaced with $\frac{4}{5}$ instead.}
 	\end{figure}
