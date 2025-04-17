@@ -29,7 +29,7 @@ DRP spring 2025}
 \newpage
 
 \section{Preface}
-This was written by Max Seay of CWRU with direction from PhD student Aaron Huntley, as part of the Directed Reading Program in Spring 2025. As of writing, it has not been proofread.
+This was written by Max Seay of CWRU with direction from PhD student Aaron Huntley, as part of the Directed Reading Program in Spring 2025. As of writing, it has not been proofread. Date of latest update on cover page.
 
 \newpage
 \section{Introduction}
@@ -88,7 +88,7 @@ Most definitions of measure and dimension involve the idea of a $\textit{coverin
 	\[3 - 1 = 2\]
 \end{example}
 
-\subsection{Definitions with infinite sets}
+\subsection{Infinite sequences of sets}
 
 \begin{example}[Stick cutting]
 	Let there be some stick $s$ to measure. Say the stick begins at a length of 1. Now do the following:
@@ -200,7 +200,35 @@ From these couple examples it seems that, in general
 Where $c$ is a constant. It seems that it would be appropriate to call the $d$ in this expression the dimension. This function $\mathcal{N}(r)$ is called a power law since $\sfrac{1}{r}$ is always raised to some power. \cite{falconer2}
 
 \newpage
-\section{Notion of Dimension: Hausdorff measure and dimension}
+\section{Notion of dimension: Hausdorff measure and dimension}
+\begin{definition}[Diameter of a set]
+	Let $S$ be a non-empty set living in $\R^n$. The diameter of $S$ is defined to be 
+	\[|S| = \sup \{|x - y| : x,y \in S\}\] 
+\end{definition}
+\begin{figure}[h]
+	\includegraphics[scale=0.25]{img/c14.jpg}
+	\caption{Diameter of a set $S$ living in $\R^2$.}
+\end{figure}
+\begin{definition}[$\delta$-cover]
+	Let $S$ be a set living in $\R^n$. A set of sets $\{C_i\}$, (where each $C_i$ is itself a set) is said to be a $\delta$-\textit{cover} of $S$ if 
+	\[S \subseteq \bigcup_{i=1}^{\infty} A_i\]
+	and $|C_i| \le \delta$ for every $C_i$.\cite{falconer1} 
+\end{definition}
+\begin{definition}[Hausdorff measure]
+	Let $S$ be a set living in $\R^n$. First define the function
+	\[\mathcal{H}_{\delta}^{d}(S) = \inf \sum_{i=1}^{\infty} |C_i|^d\]
+	where the infimum is taken over each and every possible $\delta$-cover $\{C_i\}$ of the set $S$.\cite{falconer1}
+	\\[0.2in]In other words, this function picks the "tightest" $\delta$-cover of $S$ and sums the diameter of everything in the covering. The "tightest" $\delta$-covering is the $\delta$-covering with the smallest sum.
+	\\[0.2in]Define the \textit{Hausdorff measure} of the set $S$ to be the limit:
+	\[\lim_{\delta \rightarrow 0} \mathcal{H}_{\delta}^d(S) \]
+	And denote this as simply
+	\[\mathcal{H}^d(S)\]
+\end{definition}
+\begin{figure}[h]
+	\includegraphics[scale=0.2]{img/c12.jpg}
+	\includegraphics[scale=0.2]{img/c13.jpg}
+	\caption{Two valid $\delta$-covers of an object in $\R^2$. A relatively tight $\delta$-cover (left) compared to a much less tight $\delta$-cover (right). The sum of the diameters of the tight $\delta$-cover (left) is less than the sum of the diameters of the much less tight $\delta$-cover (right). }
+\end{figure}
 \newpage
 \section{Cantor Set}
 	\begin{figure}[h]
@@ -216,7 +244,7 @@ Where $c$ is a constant. It seems that it would be appropriate to call the $d$ i
 		\[C_3 = \left[0,\sfrac{1}{27}  \right] \cup \left[\sfrac{2}{27},\sfrac{3}{27}  \right] \cup \left[\sfrac{6}{27},\sfrac{7}{27}  \right] \cup \left[\sfrac{8}{27},\sfrac{9}{27}  \right] \cup \left[\sfrac{18}{27},\sfrac{19}{27}  \right] \cup \left[\sfrac{20}{27},\sfrac{21}{27}  \right] \cup \left[\sfrac{24}{27},\sfrac{25}{27}  \right] \cup \left[\sfrac{26}{27},1  \right]\]
 		\\
 		And the recursive definition for a set $\mathcal{C}_i$ is:
-		\[\mathcal{C}_i = \frac{1}{3} \mathcal{C}_{i-1} \cup \frac{2}{3} + \frac{1}{3} \mathcal{C}_{i-1}\]
+		\[\mathcal{C}_i = \left( \frac{1}{3} \right)^i \mathcal{C}_{i-1} \cup \left( \frac{2}{3} \right)^i + \left( \frac{1}{3} \right)^i \mathcal{C}_{i-1}\]
 	\end{definition}
 	\begin{corollary}
 		$\mathcal{C}_i \ne \mathcal{C}$ for all $i \in \mathbb{N}$. No set in the sequence $\{\mathcal{C}_i\}$ is the Cantor Set, however the further you go (the larger the $i$), the ``closer'' $\mathcal{C}_i$ becomes $\mathcal{C}$. 
@@ -242,9 +270,6 @@ Where $c$ is a constant. It seems that it would be appropriate to call the $d$ i
 	\[0 \in \mathcal{C}\]
 	Thus $\mathcal{C}$ is non-empty.
 	\end{proof}
-	\begin{corollary}
-		The Cantor Set is a proper subset of $[0,1]$.
-	\end{corollary}
 	\begin{corollary}
 		$\mathcal{C}_{i}$ is always a covering of $\mathcal{C}_{i+1}$ and also always a covering of $\mathcal{C}$.
 	\end{corollary}
