@@ -60,19 +60,17 @@ On the real number line some common objects can be defined. For example:
 \begin{example}[Line segment]
 	A line segment on the real number line is the defined to be the set of all real numbers that lie between two points. A line segment that starts at 0 and reaches 1 would be defined as the set
 	\[\{x : 0 \le x \le 1\}\] 
-	equivalently expressed in \textit{interval} form:
+	equivalently expressed in \textit{interval form}:
 	\[[0,1]\]
 	In other words, a set containing every real number between and including 0 and 1.
 	\\[0.2in]The dimensionality of a line is commonly known to be 1. 
 \end{example}
 
 \begin{definition}[Interval length]
-	Given an interval $I$ of the form $[a,b]$, $(a,b)$, $(a,b]$, or $[a,b)$ where $a < b$, the length of $I$ is 
-	\[b - a\]
-	and notation
+	Given an interval $I$ of the form $[a,b]$, $(a,b)$, $(a,b]$, or $[a,b)$ where $a \le b$, the length of $I$, notated as $|I|$, is defined to be
 	\[|I| := b - a\]
 \end{definition}
-This is intuitive and useful. But how can this be justified with some definition of measure? And how can the idea of length be defined in a more general way? 
+This is intuitive and useful. But how can this be justified with some definition of measure? And how can this idea of length be extended to a more general way of measurement? 
 \subsection{Coverings}
 Most definitions of measure and dimension involve the idea of a $\textit{covering}$.
 \\[0.2in]A $\textit{covering}$ is some collection of sets that cover some other set. If the covering is made from open sets, it's called an open covering.
@@ -80,9 +78,9 @@ Most definitions of measure and dimension involve the idea of a $\textit{coverin
 	Let $I = [1,3]$. An example of an open cover for $I$ is
 	\[C = \{(-50,0),(-20,70),(50,100)\}\]
 	since 
-	\[I \subseteq \bigcup_{i=1}^{3} C_i\]
+	\[I \subseteq \bigcup C_i\]
 	and every set $C_i$ in $C$ is open.
-	\\[0.2in]You could say that $C$ is ``overkill'' as an open cover for $I$ since it spans a much longer length than $I$. In this case, the length of the open cover $\bigcup_{i=1}^{3} C_i$ is
+	\\[0.2in]You could say that $C$ is ``overkill'' as an open cover for $I$ since it spans a much longer length than $I$. In this case, the length of the open cover $\bigcup C_i$ is
 	\[100 - (-50) = 150\]
 	and the length of $I$ is
 	\[3 - 1 = 2\]
@@ -98,7 +96,7 @@ Most definitions of measure and dimension involve the idea of a $\textit{coverin
 	\\[0.2in]A valid definition of the object to be measured is:
 	\[\bigcap_{i=0}^{\infty} s_i\]
 	In other words, the intersection of every stick. The object to be measured is the set of points that are inside each and every stick $s_i$. Now there is no longer any ambiguity.
-	\\[0.2in]Another object which represents this length value is
+	\\[0.2in]Another object which represents this length value is the limit
 	\[\lim_{i \rightarrow \infty} |s_i|\]
 	\\where $s_i$ = $[0,\frac{1}{i+1}]$ represents the stick after step $i$ of the cutting process.	
 	\\[0.2in]In other words, the length of each stick in the sequence as the sequence tends towards infinity.
@@ -113,9 +111,9 @@ Most definitions of measure and dimension involve the idea of a $\textit{coverin
 	where $s_i$ = $[0,\frac{1}{i+1}]$ represents the stick after step $i$ of the cutting process.	
 	\end{corollary}
 	\begin{proof}
-		Rewrite the limit: 
+		Rewrite the limit with the definition of the length of $s_i$: 
 		\[\lim_{i \rightarrow \infty} |s_i| = \lim_{i \rightarrow \infty} \left(\frac{1}{i+1} - 0 \right)\]
-		by the definition of length and the intervals. So we have
+		So we have
 		\[\lim_{i \rightarrow \infty} |s_i| = \lim_{i \rightarrow \infty} \left(\frac{1}{i+1} - 0 \right)= \lim_{i \rightarrow \infty} \left(\frac{1}{i+1} \right)\]
 		This is a common limit known to be
 		\[\lim_{i \rightarrow \infty} \left(\frac{1}{i+1} \right) = 0\]
@@ -154,7 +152,7 @@ Most definitions of measure and dimension involve the idea of a $\textit{coverin
 \newpage
 \begin{figure}[h]
 	\includegraphics[scale=0.25]{img/c6.jpg}
-	\caption{The infinite construction of an object in $\R$. On each step, each interval is cut and half and the right half is moved towards the right.}
+	\caption{The infinite construction of an object living in the real number line $\R$. On each step, each interval is cut and half and the right half is moved towards the right.}
 \end{figure}
 A common way of measuring an object is to tighly cover it with something. The object's measure should be similar to that of the covering.
 \\[0.2in]Like to measure the surface area of a sphere, tighly wrap a blanket around it so that it covers the sphere, then measure the blanket. This covering idea is often a part of definitions of measure and dimension.
@@ -227,8 +225,51 @@ Where $c$ is a constant. It seems that it would be appropriate to call the $d$ i
 \begin{figure}[h]
 	\includegraphics[scale=0.2]{img/c12.jpg}
 	\includegraphics[scale=0.2]{img/c13.jpg}
-	\caption{Two valid $\delta$-covers of an object in $\R^2$. A relatively tight $\delta$-cover (left) compared to a much less tight $\delta$-cover (right). The sum of the diameters of the tight $\delta$-cover (left) is less than the sum of the diameters of the much less tight $\delta$-cover (right). }
+	\caption{Two valid $\delta$-covers of an object living in $\R^2$. A relatively tight $\delta$-cover (left) compared to a much less tight $\delta$-cover (right). The sum of the diameters of the tight $\delta$-cover (left) is less than the sum of the diameters of the much less tight $\delta$-cover (right). }
 \end{figure}
+Let's measure some objects using Hausdorff measure.
+\begin{example}[Line segment]
+	Let $S$ be a line segment living in $\R^2$. Say that
+	\[S = [0,1]\]
+	The length of $S$ is 1. Though now I would like to compute this using Hausdorff measure. Recall the function
+	\[\mathcal{H}_{\delta}^d (S) = \inf \sum_{i=1}^{\infty} |C_i|^d\]
+	where the infimum is taken over every possible $\delta$-covers $\{C_i\}$ of $S$.
+	\\[0.2in]Ok for now let
+	\[\delta = \sfrac{1}{10}\]
+	\[d = 1\]
+	With these values we now have the function
+	\[\mathcal{H}_{\sfrac{1}{10}}^{1} (S) = \inf \sum_{i=1}^{\infty} |C_i|\]
+	where the infimum is taken over every possible $\delta$-cover where $\delta = \sfrac{1}{10}$.
+	\\[0.2in]In other words, the infimum is now taken over every possible cover $\{C_i\}$ of $S$ where
+	\[|C_i| \le \sfrac{1}{10}\]
+	for all $C_i$. 
+	\begin{figure}[h]
+		\includegraphics[scale=0.25]{img/c19.jpg}
+		\includegraphics[scale=0.26]{img/c18.jpg}
+		\caption{Two ways to cover the line segment [0,1] with a $\delta$-cover where $\delta = \sfrac{1}{10}$. Each orange circle represents an element $C_i \in \{C_i\}$ of the $\delta$-covering. Notice $[0,1] \subseteq \bigcup \{C_i\}$ and $|C_i| \le \sfrac{1}{10}$ for all $C_i$ (as required of a $\delta$-cover.) Let the top image show the cover $\{C_i\}$ and the bottom image show the cover $\{D_i\}$. It can be seen that}
+		\[\sum |C_i| < \sum |D_i|\]
+	\end{figure}
+	\\[0.2in]For simplicity choose a cover like that of the figure (top image.) That is, arrange the cover such that there are 10 balls each with size $\sfrac{1}{10}$ covering the line segment side-by-side.
+	\\[0.2in]For each ball in the cover
+	\[|C_i| = \sfrac{1}{10}\]
+	So we have
+	\[\mathcal{H}_{\sfrac{1}{10}}^{1} (S) = \sum_{i=1}^{10} |C_i| = \sum_{i=1}^{10} \sfrac{1}{10} = \left( \frac{1}{10} + \frac{1}{10} + \dots \right) = 1\]
+	Now set
+	\[\delta = \sfrac{1}{20}\]
+	And consider the same configuration of balls for the $\delta$-cover of $S$. That is, arrange 20 balls side-by-side all of diameter $\sfrac{1}{20}$. Now we have that
+	\[\mathcal{H}_{\sfrac{1}{20}}^{1} (S) = \sum_{i=1}^{20} |C_i| = \sum_{i=1}^{20} \sfrac{1}{20} = \left( \frac{1}{20} + \frac{1}{20} + \dots \right) = 1\]
+	Now using the same kind of covers as before, send $\delta$ to 0. To approach 0, it suffices to let
+	\[\delta = \frac{1}{N}\]
+	where $N \in \N$ and $\delta \rightarrow 0$ means $N \rightarrow \infty$.
+	\\[0.2in]So now observe the limit
+	\[\lim_{\delta \rightarrow 0} \mathcal{H}_{\delta}^{1} (S) = \lim_{\delta \rightarrow 0} \sum_{i=1}^{\sfrac{1}{\delta}} |C_i| = \lim_{\delta \rightarrow 0} \sum_{i=1}^{\sfrac{1}{\delta}} \delta\]
+	Now replace $\delta$ with its definition from above 
+	\[\lim_{\delta \rightarrow 0} \mathcal{H}_{\delta}^{1} (S) = \lim_{N \rightarrow \infty} \sum_{i=1}^{N} \frac{1}{N}\]
+	I know for any and all $N \in \N$ that
+	\[\sum_{i=1}^{N} \frac{1}{N} = 1\]
+	Thus we have that the Hausdorff measure of the set $S$ where $S = [0,1]$ is
+	\[\mathcal{H}^1 (S) = \lim_{\delta \rightarrow 0} \mathcal{H}_{\delta}^{1} (S) = \lim_{N \rightarrow \infty} \sum_{i=1}^{N} \frac{1}{N} = 1\]
+\end{example}
 \newpage
 \section{Cantor Set}
 	\begin{figure}[h]
@@ -244,7 +285,7 @@ Where $c$ is a constant. It seems that it would be appropriate to call the $d$ i
 		\[C_3 = \left[0,\sfrac{1}{27}  \right] \cup \left[\sfrac{2}{27},\sfrac{3}{27}  \right] \cup \left[\sfrac{6}{27},\sfrac{7}{27}  \right] \cup \left[\sfrac{8}{27},\sfrac{9}{27}  \right] \cup \left[\sfrac{18}{27},\sfrac{19}{27}  \right] \cup \left[\sfrac{20}{27},\sfrac{21}{27}  \right] \cup \left[\sfrac{24}{27},\sfrac{25}{27}  \right] \cup \left[\sfrac{26}{27},1  \right]\]
 		\\
 		And the recursive definition for a set $\mathcal{C}_i$ is:
-		\[\mathcal{C}_i = \left( \frac{1}{3} \right)^i \mathcal{C}_{i-1} \cup \left( \frac{2}{3} \right)^i + \left( \frac{1}{3} \right)^i \mathcal{C}_{i-1}\]
+		\[\mathcal{C}_i = \frac{1}{3}  \mathcal{C}_{i-1} \cup \frac{2}{3} + \frac{1}{3} \mathcal{C}_{i-1}\]
 	\end{definition}
 	\begin{corollary}
 		$\mathcal{C}_i \ne \mathcal{C}$ for all $i \in \mathbb{N}$. No set in the sequence $\{\mathcal{C}_i\}$ is the Cantor Set, however the further you go (the larger the $i$), the ``closer'' $\mathcal{C}_i$ becomes $\mathcal{C}$. 
