@@ -209,7 +209,7 @@ Where $c$ is a constant. It seems that it would be appropriate to call the $d$ i
 \end{figure}
 \begin{definition}[$\delta$-cover]
 	Let $S$ be a set living in $\R^n$. A set of sets $\{C_i\}$, (where each $C_i$ is itself a set) is said to be a $\delta$-\textit{cover} of $S$ if 
-	\[S \subseteq \bigcup_{i=1}^{\infty} A_i\]
+	\[S \subseteq \bigcup C_i\]
 	and $|C_i| \le \delta$ for every $C_i$.\cite{falconer1} 
 \end{definition}
 \begin{definition}[Hausdorff measure]
@@ -231,16 +231,16 @@ Let's measure some objects using Hausdorff measure.
 \begin{example}[Line segment]
 	Let $S$ be a line segment living in $\R^2$. Say that
 	\[S = [0,1]\]
-	The length of $S$ is 1. Though now I would like to compute this using Hausdorff measure. Recall the function
+	The length of $S$ is 1. Though now I would like to compute the measure of this set $S$ using Hausdorff measure. Recall the function
 	\[\mathcal{H}_{\delta}^d (S) = \inf \sum_{i=1}^{\infty} |C_i|^d\]
-	where the infimum is taken over every possible $\delta$-covers $\{C_i\}$ of $S$.
+	where the infimum is taken over every possible $\delta$-cover $\{C_i\}$ of $S$.
 	\\[0.2in]Ok for now let
 	\[\delta = \sfrac{1}{10}\]
 	\[d = 1\]
 	With these values we now have the function
 	\[\mathcal{H}_{\sfrac{1}{10}}^{1} (S) = \inf \sum_{i=1}^{\infty} |C_i|\]
-	where the infimum is taken over every possible $\delta$-cover where $\delta = \sfrac{1}{10}$.
-	\\[0.2in]In other words, the infimum is now taken over every possible cover $\{C_i\}$ of $S$ where
+	where the infimum is taken over every possible $\delta$-cover $\{C_i\}$ of $S$ where $\delta = \sfrac{1}{10}$.
+	\\[0.2in]In other words, the infimum is now taken over every possible $\delta$-cover $\{C_i\}$ of $S$ where
 	\[|C_i| \le \sfrac{1}{10}\]
 	for all $C_i$. 
 	\begin{figure}[h]
@@ -248,16 +248,17 @@ Let's measure some objects using Hausdorff measure.
 		\includegraphics[scale=0.26]{img/c18.jpg}
 		\caption{Two ways to cover the line segment [0,1] with a $\delta$-cover where $\delta = \sfrac{1}{10}$. Each orange circle represents an element $C_i \in \{C_i\}$ of the $\delta$-covering. Notice $[0,1] \subseteq \bigcup \{C_i\}$ and $|C_i| \le \sfrac{1}{10}$ for all $C_i$ (as required of a $\delta$-cover.) Let the top image show the cover $\{C_i\}$ and the bottom image show the cover $\{D_i\}$. It can be seen that}
 		\[\sum |C_i| < \sum |D_i|\]
+		(Roughly speaking because there are less balls in the top cover $\{C_i\}$ than the bottom cover $\{D_i\}$.) 
 	\end{figure}
 	\\[0.2in]For simplicity choose a cover like that of the figure (top image.) That is, arrange the cover such that there are 10 balls each with size $\sfrac{1}{10}$ covering the line segment side-by-side.
 	\\[0.2in]For each ball in the cover
 	\[|C_i| = \sfrac{1}{10}\]
 	So we have
 	\[\mathcal{H}_{\sfrac{1}{10}}^{1} (S) = \sum_{i=1}^{10} |C_i| = \sum_{i=1}^{10} \sfrac{1}{10} = \left( \frac{1}{10} + \frac{1}{10} + \dots \right) = 1\]
-	Now set
-	\[\delta = \sfrac{1}{20}\]
-	And consider the same configuration of balls for the $\delta$-cover of $S$. That is, arrange 20 balls side-by-side all of diameter $\sfrac{1}{20}$. Now we have that
+	So this ``approximatation'' of Hausdorff measure, where $\delta = \sfrac{1}{10}$, agrees with intuitition.
+	\\[0.2in]Ok now try $\delta = \sfrac{1}{20}$ and consider the same configuration of balls for the $\delta$-cover of $S$. That is, arrange 20 balls side-by-side all of diameter $\sfrac{1}{20}$. Now we have that
 	\[\mathcal{H}_{\sfrac{1}{20}}^{1} (S) = \sum_{i=1}^{20} |C_i| = \sum_{i=1}^{20} \sfrac{1}{20} = \left( \frac{1}{20} + \frac{1}{20} + \dots \right) = 1\]
+	So this ``approximatation'' of Hausdorff measure, where $\delta$ is even smaller, still agrees with intuitition.
 	Now using the same kind of covers as before, send $\delta$ to 0. To approach 0, it suffices to let
 	\[\delta = \frac{1}{N}\]
 	where $N \in \N$ and $\delta \rightarrow 0$ means $N \rightarrow \infty$.
