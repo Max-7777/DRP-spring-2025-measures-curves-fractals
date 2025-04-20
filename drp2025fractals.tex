@@ -33,28 +33,28 @@ This was written by Max Seay of CWRU with direction from PhD student Aaron Huntl
 
 \newpage
 \section{Introduction}
-The following notes describe the concepts of measurement, dimensionality and fractal objects living inside metric spaces. The goal is to uderstand how to compute the \textit{dimensionality} of arbitrarily defined objects. It's known that common objects attain dimensionality of whole numbers. For example: the dimension of the point is 0, the dimension of the line is 1, the dimension of the filled square is 2, the dimension of the filled cube is 3, etc. However these notes also describe how dimensionality is computed for other, more strangely behaved objects. Objects like \textit{fractals}, which can attain more unexpected measurements and dimensionality. For example, the Cantor Set of the real number line $\R$, which takes on non-integer dimensionality of $\frac{\log 2}{\log 3}$, while also having a length of 0. Or the Dragon Curves, a family of space-filling fractal curves derived from the repition of bending of a line towards infinity, which acheive positive area and have the ability to cover and tile the plane of real numbers, $\R^2$.
+The following notes describe concepts of measurement, dimensionality and fractal objects living within metric spaces. The goal is to uderstand how to compute the \textit{dimensionality} of arbitrarily defined objects. It's already assumed that common objects attain dimensionality of whole numbers. For example: the point is of dimension 0, the line is of dimension 1, the filled square is of dimension 2, the filled cube is of dimension 3, etc. However these notes also describe how dimensionality can be computed for other, more strangely behaved objects. Objects like \textit{fractals}, which can attain more unexpected measurements and dimensionality. For example, the Cantor Set of the real number line $\R$, which takes on non-integer dimensionality of $\frac{\log 2}{\log 3}$, while also having a length of 0. Or the Dragon Curves, a family of space-filling fractal curves derived from the repition of bending of a line towards infinity, which acheive positive area and have the ability to cover and tile the plane of real numbers, $\R^2$.
 \begin{definition}[Object]
-	A finite or infinite \textit{compact} set of points $S$, where $S \subset \R^n$.
+	A finite or infinite \textit{compact} set $S$ living within some metric space.
 \end{definition}
-Below are common examples of objects (sets) and their dimensionality.
+Below are listed further examples of objects, defined from sets, and their corresponding dimensionality:
 \begin{itemize}
-	\item $\{0\}$ \\[0.1in] dimensionality: 0
-	\item $\{1\}$ \\[0.1in] dimensionality: 0
-	\item $\{2,4,6,8\}$ \\[0.1in] dimensionality: 0
-	\item $[0,1]$ \\[0.1in] dimensionality: 1
-	\item $(0,1)$ \\[0.1in] dimensionality: 1
-	\item $(0,1]$ \\[0.1in] dimensionality: 1
-	\item  $[0,1] \times [0,1]$ \\[0.1in] dimensionality: 2
+	\item $\{0\} \in \R$ \\[0.1in] dimensionality: 0
+	\item $\{1\} \in \R$ \\[0.1in] dimensionality: 0
+	\item $\{2,4,6,8\} \in \R$ \\[0.1in] dimensionality: 0
+	\item $[0,1] \in \R$ \\[0.1in] dimensionality: 1
+	\item $(0,1) \in \R$ \\[0.1in] dimensionality: 1
+	\item $(0,1] \in \R$ \\[0.1in] dimensionality: 1
+	\item  $[0,1] \times [0,1] \in \R^2$ \\[0.1in] dimensionality: 2
 \end{itemize}
 
 \newpage
 \section{How to measure the real numbers}
 \begin{figure}[h]
 	\includegraphics[scale=0.3]{img/c10.jpg}
-	\caption{A few points and line segments living in the real number line $\R$.}
+	\caption{Points and line segments living within the real number line $\R$.}
 \end{figure}
-On the real number line some common objects can be defined. For example:
+On the real number line $\R$, common objects can be defined. For example:
 \begin{example}[Point]
 	A point on the real number line is a single real number. Examples include: $1,2,3,17,\sqrt{2},\pi$.
 	\\[0.2in]The dimensionality of a point is commonly known to be 0. A point can't have length.
@@ -156,10 +156,12 @@ Most definitions of measure and dimension involve the idea of a $\textit{coverin
 	\includegraphics[scale=0.25]{img/c6.jpg}
 	\caption{The infinite construction of an object living in the real number line $\R$. On each step, each interval is cut and half and the right half is moved towards the right.}
 \end{figure}
-A common way of measuring an object is to tighly cover it with something. The object's measure should be similar to that of the covering.
-\\[0.2in]Like to measure the surface area of a sphere, tighly wrap a blanket around it so that it covers the sphere, then measure the blanket. This covering idea is often a part of definitions of measure and dimension.
+A common way of measuring an object is with the construction a covering. When the cover is wrapped around the object, the measure of the cover should be similar to that of the object itself.
+\\[0.2in]For example, to measure the surface area of a sphere, a cover could take on the form of a 2-dimensional blanket or sheet, which when tighly wrapped around the sphere covers the entire object. The trivial measurement of the area of the sheet can then be compared to that of the sphere. The idea of covers are often involved with the many varied definitions of measure and dimension.
 \subsection{Lebesgue measure}
-Lebesgue measure on the real number line is a method of measuring an object in $\R$ by covering with intervals. The covering of intervals tightly cover the object. The sum of the lengths of intervals is approximately the measure of the object itself.
+Lebesgue measure on the real number line is a method of measuring objects within $\R$. The object is nearly wrapped within a collection of intervals, aimed to cover the entire object. As the cover tightens, shrinks or expands, the sum of measurements of the collection approaches that of the object itself.
+\\[0.2in]$\textit{Outer}$ Lebesgue measure is to begin with an outside cover that initially overestimates the length of the object, then shrinking it, and approaching the desired measurement.\cite{edgar}
+\\[0.2in]$\textit{Inner}$ Lebesgue measure is to begin with an inside cover that underestimates the length of the object, then expanding it, and approaching the desired measurement.\cite{edgar}
 \begin{definition}[Lebesgue measure]
 	
 \end{definition}
