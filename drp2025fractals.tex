@@ -274,8 +274,47 @@ Let's measure some objects using Hausdorff measure.
 	\[\sum_{i=1}^{N} \frac{1}{N} = 1\]
 	Thus we have that the Hausdorff measure of the set $S$ where $S = [0,1]$ is
 	\[\mathcal{H}^1 (S) = \lim_{\delta \rightarrow 0} \mathcal{H}_{\delta}^{1} (S) = \lim_{N \rightarrow \infty} \sum_{i=1}^{N} \frac{1}{N} = 1\]
-	\includegraphics[scale=0.25]{img/c21.jpg}
 \end{example}
+Note that throughout the above compution of dimensionality, $d=1$ was given. To experiment with this $d$ value, the same conputation can be repeated but instead with a different value of $d$.
+\begin{example}[Line segment II]
+	Let $S$ be a line segment living in $\R^2$. Say that
+	\[S = [0,1]\]
+	Again the length of $S$ is 1. Beginning once again with the computation, construct the function
+	\[\mathcal{H}_{\delta}^d (S) = \inf \sum_{i=1}^{\infty} |C_i|^d\]
+	where the infimum is taken over every possible $\delta$-cover $\{C_i\}$ of $S$.
+	\\[0.2in]But now in this case set
+	\[\delta = \sfrac{1}{10}\]
+	\[d = 2\]
+	With these values we now have the function
+	\[\mathcal{H}_{\sfrac{1}{10}}^{2} (S) = \inf \sum_{i=1}^{\infty} |C_i|^2\]
+	where the infimum is taken over every possible $\delta$-cover $\{C_i\}$ of $S$ where $\delta = \sfrac{1}{10}$.
+	\\[0.2in]And now $d=2$.
+	\\[0.2in]Again we apply the previous covering, that is, an arrangement of balls such that every ball, each with size $\sfrac{1}{10}$, covers the line segment side-by-side.
+	\\[0.2in]For each ball within the cover
+	\[|C_i| = \sfrac{1}{10}\]
+	by construction, we have 
+	\[\mathcal{H}_{\sfrac{1}{10}}^{2} (S) = \sum_{i=1}^{10} |C_i|^2 = \sum_{i=1}^{10} \left( \sfrac{1}{10} \right)^2 = \left( \frac{1}{100} + \frac{1}{100} + \dots \right) = \frac{10}{100} = \frac{1}{10}\]
+	Note that compared to the Hausdorff measurements of the first example (where $d = 1$) this is smaller.
+	\\[0.2in]Ok now try $\delta = \sfrac{1}{20}$ and consider the same configuration of balls for the $\delta$-cover of $S$. That is, arrange 20 balls side-by-side all of diameter $\sfrac{1}{20}$. Now we have that
+	\[\mathcal{H}_{\sfrac{1}{20}}^{2} (S) = \sum_{i=1}^{20} |C_i|^2 = \sum_{i=1}^{20} \left( \sfrac{1}{20} \right)^2 = \left( \frac{1}{400} + \frac{1}{400} + \dots \right) = \frac{20}{400} = \frac{1}{20}\]
+	Again this measurement computes to an even smaller value.
+	\\[0.2in]And now to send $\delta$ to 0. To approach 0, it suffices to let
+	\[\delta = \frac{1}{N}\]
+	where $N \in \N$ and $\delta \rightarrow 0$ means $N \rightarrow \infty$.
+	\\[0.2in]So now observe the limit
+	\[\lim_{\delta \rightarrow 0} \mathcal{H}_{\delta}^{2} (S) = \lim_{\delta \rightarrow 0} \sum_{i=1}^{\sfrac{1}{\delta}} |C_i|^2 = \lim_{\delta \rightarrow 0} \sum_{i=1}^{\sfrac{1}{\delta}} \delta^2\]
+	And replacing $\delta$ with its definition from above yeilds 
+	\[\lim_{\delta \rightarrow 0} \mathcal{H}_{\delta}^{2} (S) = \lim_{N \rightarrow \infty} \sum_{i=1}^{N} \left( \frac{1}{N} \right)^2\]
+	And I know for any and all $N \in \N$ that
+	\[\sum_{i=1}^{N} \left( \frac{1}{N} \right)^2 = 0\]
+	Thus we have that the Hausdorff measure when $d = 2$ of the set $S$ where $S = [0,1]$ is
+	\[\mathcal{H}^2 (S) = \lim_{\delta \rightarrow 0} \mathcal{H}_{\delta}^{2} (S) = \lim_{N \rightarrow \infty} \sum_{i=1}^{N} \left( \frac{1}{N}\right)^2 = 0\]
+	Well by increasing $d$ to 2, the computation has now yeilded an answer which disagrees with intuition.
+\end{example}
+\begin{figure}[h]
+	\includegraphics[scale=0.25]{img/c21.jpg}
+	\caption{A visual of the sequence $\{\sfrac{1}{n}\}$. A sequence which in fact attains greater-than-zero dimension when considered by certain definitions of dimension.}
+\end{figure}
 \newpage
 \section{Cantor Set}
 	\begin{figure}[h]
@@ -321,7 +360,7 @@ Let's measure some objects using Hausdorff measure.
 		There Cantor Set has an infinite number of elements.
 	\end{corollary}
 	\begin{proof}
-		To show the Cantor Set has an infinite number of elements, it suffices to define a injective map between all the natural numbers $\mathbb{N}$ and some (or all) of the elements in the Cantor Set $\mathcal{C}$.
+		To show the Cantor Set has an infinite number of elements, it suffices to define an injective map between the natural numbers $\mathbb{N}$ and some (or all) elements of the Cantor Set $\mathcal{C}$, thus verifying the cardinality of $\mathcal{C}$ matches or excedes countably infinite elements.
 	\end{proof}
 	\newpage
 	\begin{figure}[h]
