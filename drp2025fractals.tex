@@ -33,9 +33,11 @@ This was written by Max Seay of CWRU with direction from PhD student Aaron Huntl
 
 \newpage
 \section{Introduction}
-The goal is to find how to compute the \textit{dimensionality} of some given object. I already know the \textit{dimensionality} of some certain objects. I know the dimension of a point is 0, the dimension of a line is 1, the dimension of a square is 2, etc. But how is dimensionality calculated for some arbitrary object? In this case, by object, I mean:
-\\[0.2in]A finite or infinite \textit{compact} set of points $S$, where $S \subset \R^n$.
-\\[0.2in]Below are common examples of objects (sets) and their dimensionality.
+The following notes describe the concepts of measurement, dimensionality and fractal objects living inside metric spaces. The goal is to uderstand how to compute the \textit{dimensionality} of arbitrarily defined objects. It's known that common objects attain dimensionality of whole numbers. For example: the dimension of the point is 0, the dimension of the line is 1, the dimension of the filled square is 2, the dimension of the filled cube is 3, etc. However these notes also describe how dimensionality is computed for other, more strangely behaved objects. Objects like \textit{fractals}, which can attain more unexpected measurements and dimensionality. For example, the Cantor Set of the real number line $\R$, which takes on non-integer dimensionality of $\frac{\log 2}{\log 3}$, while also having a length of 0. Or the Dragon Curves, a family of space-filling fractal curves derived from the repition of bending of a line towards infinity, which acheive positive area and have the ability to cover and tile the plane of real numbers, $\R^2$.
+\begin{definition}[Object]
+	A finite or infinite \textit{compact} set of points $S$, where $S \subset \R^n$.
+\end{definition}
+Below are common examples of objects (sets) and their dimensionality.
 \begin{itemize}
 	\item $\{0\}$ \\[0.1in] dimensionality: 0
 	\item $\{1\}$ \\[0.1in] dimensionality: 0
@@ -270,11 +272,12 @@ Let's measure some objects using Hausdorff measure.
 	\[\sum_{i=1}^{N} \frac{1}{N} = 1\]
 	Thus we have that the Hausdorff measure of the set $S$ where $S = [0,1]$ is
 	\[\mathcal{H}^1 (S) = \lim_{\delta \rightarrow 0} \mathcal{H}_{\delta}^{1} (S) = \lim_{N \rightarrow \infty} \sum_{i=1}^{N} \frac{1}{N} = 1\]
+	\includegraphics[scale=0.25]{img/c21.jpg}
 \end{example}
 \newpage
 \section{Cantor Set}
 	\begin{figure}[h]
-		\includegraphics[scale=0.3]{img/c11.jpg}
+		\includegraphics[scale=0.3]{img/c20.jpg}
 		\caption{The infinite construction of the Cantor Set in $\R$. On each step, the middle third of each interval is deleted.}
 	\end{figure}
 	Let $\mathcal{C}$ be the Cantor Set.
@@ -290,9 +293,6 @@ Let's measure some objects using Hausdorff measure.
 	\end{definition}
 	\begin{corollary}
 		$\mathcal{C}_i \ne \mathcal{C}$ for all $i \in \mathbb{N}$. No set in the sequence $\{\mathcal{C}_i\}$ is the Cantor Set, however the further you go (the larger the $i$), the ``closer'' $\mathcal{C}_i$ becomes $\mathcal{C}$. 
-	\end{corollary}
-	\begin{corollary}
-		If $x \notin [0,1]$, then $x \notin \mathcal{C}$.
 	\end{corollary}
 	\begin{corollary}
 		The Cantor Set is non-empty.
@@ -315,6 +315,12 @@ Let's measure some objects using Hausdorff measure.
 	\begin{corollary}
 		$\mathcal{C}_{i}$ is always a covering of $\mathcal{C}_{i+1}$ and also always a covering of $\mathcal{C}$.
 	\end{corollary}
+	\begin{corollary}
+		There Cantor Set has an infinite number of elements.
+	\end{corollary}
+	\begin{proof}
+		To show the Cantor Set has an infinite number of elements, it suffices to define a injective map between all the natural numbers $\mathbb{N}$ and some (or all) of the elements in the Cantor Set $\mathcal{C}$.
+	\end{proof}
 	\newpage
 	\begin{figure}[h]
 		\includegraphics[scale=0.2]{img/c8.jpg}
