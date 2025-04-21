@@ -10,7 +10,7 @@
 \newcommand{\seay}[1]{\textcolor{blue}{#1}}
 \hypersetup{ 	
 pdfsubject = {Mathematics},
-pdftitle = {fractal dimension},
+pdftitle = {Fractal Dimension},
 pdfauthor = {Max Seay and Aaron Huntley}
 }
 
@@ -336,6 +336,13 @@ Note that throughout the above compution of dimensionality, $d=1$ was given. To 
 	\[d < 1 \implies \lim_{N \rightarrow \infty} \sum_{i=1}^{N} \left( \frac{1}{N} \right)^d = \infty\]
 	And finally
 	\[d = 1 \implies \lim_{N \rightarrow \infty} \sum_{i=1}^{N} \left( \frac{1}{N} \right)^d = 1\]
+	\begin{figure}[h]
+		\includegraphics[scale=0.25]{img/c22.jpg}
+		\caption{Plot of $d$ vs. $\mathcal{H}^d (S)$}
+	\end{figure}
+	\subsection{Hausdorff Dimension}
+	In summary, the Hausdorff measure function $\mathcal{H}^d (S)$ as a function with respect to $d$ is a step function. To the left of some \textit{critical value}, $\mathcal{H}^d (S) = 0$ and to the right, $\mathcal{H}^d (S) = \infty$.
+	\\[0.2in]And so this critical value is denoted as the \textit{Hausdorff dimension} of a given object. And when the Hausdorff measure $\mathcal{H}^d (S)$ is computed with this critical value, it returns a accurate measurement of the object. To the left, it returns 0. To the right, it returns $\infty$.
 	The relationship between the value of $d$ chosen and the resulting Hausdorff measure can be represented as a plot:
 \end{example}
 
