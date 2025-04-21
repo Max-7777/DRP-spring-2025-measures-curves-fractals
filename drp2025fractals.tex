@@ -277,14 +277,11 @@ Note that throughout the above compution of dimensionality, $d=1$ was given. To 
 	\[S = [0,1]\]
 	Again the length of $S$ is 1. Beginning once again with the computation, construct the function
 	\[\mathcal{H}_{\delta}^d (S) = \inf \sum_{i=1}^{\infty} |C_i|^d\]
-	where the infimum is taken over every possible $\delta$-cover $\{C_i\}$ of $S$.
-	\\[0.2in]But now in this case set
-	\[\delta = \sfrac{1}{10}\]
-	\[d = 2\]
+	where the infimum is taken over every possible $\delta$-cover $\{C_i\}$ of $S$. But now in this case set
+	\[\delta = \sfrac{1}{10} \qquad \text{and} \qquad d = 2\]
 	With these values we now have the function
 	\[\mathcal{H}_{\sfrac{1}{10}}^{2} (S) = \inf \sum_{i=1}^{\infty} |C_i|^2\]
-	where the infimum is taken over every possible $\delta$-cover $\{C_i\}$ of $S$ where $\delta = \sfrac{1}{10}$.
-	\\[0.2in]And now $d=2$.
+	where the infimum is taken over every possible $\delta$-cover $\{C_i\}$ of $S$ where $\delta = \sfrac{1}{10}$. And also now $d=2$.
 	\\[0.2in]Again we apply the previous covering, that is, an arrangement of balls such that every ball, each with size $\sfrac{1}{10}$, covers the line segment side-by-side.
 	\\[0.2in]For each ball within the cover
 	\[|C_i| = \sfrac{1}{10}\]
@@ -309,6 +306,40 @@ Note that throughout the above compution of dimensionality, $d=1$ was given. To 
 	\[\mathcal{H}^2 (S) = \lim_{\delta \rightarrow 0} \mathcal{H}_{\delta}^{2} (S) = \lim_{N \rightarrow \infty} \sum_{i=1}^{N} \left( \frac{1}{N}\right)^2 = 0\]
 	Well by increasing $d$ to 2, the computation has now yeilded an answer which disagrees with intuition.
 \end{example}
+\begin{example}[Line segment with generalized $d$]
+	Let $S$ be a line segment living in $\R^2$. Say that
+	\[S = [0,1]\]
+	Again the length of $S$ is 1. Beginning once again with the computation, construct the function
+	\[\mathcal{H}_{\delta}^d (S) = \inf \sum_{i=1}^{\infty} |C_i|^d\]
+	where the infimum is taken over every possible $\delta$-cover $\{C_i\}$ of $S$. But now in this case set
+	\[\delta = \sfrac{1}{10}\]
+	And now let $d \in \mathbb{R}$, that is, let $d$ be any real number. With these we compute the Hausdorff dimension by sending $\delta$ to 0.
+	\\[0.2in]To approach 0, it suffices to let
+	\[\delta = \frac{1}{N}\]
+	where $N \in \N$ and $\delta \rightarrow 0$ means $N \rightarrow \infty$.
+	\\[0.2in]So now observe the limit
+	\[\lim_{\delta \rightarrow 0} \mathcal{H}_{\delta}^{d} (S) = \lim_{\delta \rightarrow 0} \sum_{i=1}^{\sfrac{1}{\delta}} |C_i|^d = \lim_{\delta \rightarrow 0} \sum_{i=1}^{\sfrac{1}{\delta}} \delta^d\]
+	And replacing $\delta$ with its definition from above yeilds 
+	\[\lim_{\delta \rightarrow 0} \mathcal{H}_{\delta}^{2} (S) = \lim_{N \rightarrow \infty} \sum_{i=1}^{N} \left( \frac{1}{N} \right)^d\]
+	And now to analyze this expression for different values of $d$. 
+	\\[0.2in]Well as shown above, we have computed that if
+	\[d = 1\]
+	then
+	\[\lim_{N \rightarrow \infty} \sum_{i=1}^{N} \left( \frac{1}{N} \right)^d = 1\]
+	and also if
+	\[d = 2\]
+	then
+	\[\lim_{N \rightarrow \infty} \sum_{i=1}^{N} \left( \frac{1}{N} \right)^d = 0\]
+	in fact it can be seen that
+	\[d > 1 \implies \lim_{N \rightarrow \infty} \sum_{i=1}^{N} \left( \frac{1}{N} \right)^d = 0\]
+	And also 
+	\[d < 1 \implies \lim_{N \rightarrow \infty} \sum_{i=1}^{N} \left( \frac{1}{N} \right)^d = \infty\]
+	And finally
+	\[d = 1 \implies \lim_{N \rightarrow \infty} \sum_{i=1}^{N} \left( \frac{1}{N} \right)^d = 1\]
+	The relationship between the value of $d$ chosen and the resulting Hausdorff measure can be represented as a plot:
+\end{example}
+
+
 \begin{figure}[h]
 	\includegraphics[scale=0.25]{img/c21.jpg}
 	\caption{A visual of the sequence $\{\sfrac{1}{n}\}$. A sequence which in fact attains greater-than-zero dimension when considered by certain definitions of dimension.}
