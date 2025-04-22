@@ -33,7 +33,7 @@ This was written by Max Seay of CWRU with direction from PhD student Aaron Huntl
 
 \newpage
 \section{Introduction}
-The following notes describe concepts of measurement, dimensionality and fractal objects living within metric spaces. The goal is to understand how to compute the \textit{dimensionality} of arbitrarily defined objects. It's already assumed that common objects attain dimensionality of whole numbers. For example: the point is of dimension 0, the line is of dimension 1, the filled square is of dimension 2, the filled cube is of dimension 3, etc. However these notes also describe how dimensionality can be computed for other, more strangely behaved objects. Objects such as \textit{fractals} can attain more unexpected values of measure and dimensionality. For example, the Cantor Set of the real number line $\R$, which takes on non-integer dimensionality of $\frac{\log 2}{\log 3}$, while also having a length of 0. Or the Dragon Curves, a family of space-filling fractal curves derived from the repition of bending of a line towards infinity, which acheive positive area and have the ability to cover and tile the plane of real numbers, $\R^2$.
+The following notes describe concepts of measurement, dimensionality and fractal objects living within metric spaces. The goal is to understand how to compute the \textit{dimensionality} of arbitrarily defined objects. It's already assumed that common objects attain dimensionality of whole numbers. For example: the point is of dimension 0, the line is of dimension 1, the filled square is of dimension 2, the filled cube is of dimension 3, etc. However these notes also describe how dimensionality can be computed for other, more strangely behaved objects. Objects such as \textit{fractals} can attain more unexpected values of measure and dimensionality. For example: the Cantor Set of the real number line $\R$, which takes on non-integer dimensionality of $\frac{\log 2}{\log 3}$, while also having a length of 0. Or the Dragon Curves: a family of space-filling fractal curves derived from the repition of bending of a line towards infinity, which acheive positive area and have the ability to cover and tile the plane of real numbers, $\R^2$.
 \begin{definition}[Object]
 	A finite or infinite \textit{compact} set $S$ living within some metric space.
 \end{definition}
@@ -156,6 +156,10 @@ Most definitions of measure and dimension involve the idea of a $\textit{coverin
 	\includegraphics[scale=0.25]{img/c6.jpg}
 	\caption{The infinite construction of an object living in the real number line $\R$. On each step, each interval is cut and half and the right half is moved towards the right.}
 \end{figure}
+\begin{figure}[h]
+	\includegraphics[scale=0.25]{img/c21.jpg}
+	\caption{A visual of the sequence $\{\sfrac{1}{n}\}$. A sequence which in fact attains greater-than-zero dimension when considered by certain definitions of dimension.}
+\end{figure}
 A common way of measuring an object is with the construction a covering. When the cover is wrapped around the object, the measure of the cover should be similar to that of the object itself.
 \\[0.2in]For example, to measure the surface area of a sphere, a cover could take on the form of a 2-dimensional blanket or sheet, which when tighly wrapped around the sphere covers the entire object. The trivial measurement of the area of the sheet can then be compared to that of the sphere. The idea of covers are often involved with the many varied definitions of measure and dimension.
 \subsection{Lebesgue measure}
@@ -177,7 +181,7 @@ I would like to know how to estimate the dimension of arbitrary objects on the p
 	\\[0.2in]If $r = \sfrac{1}{3}$, I will need at least 3 boxes.
 	\\[0.2in]If $r = \sfrac{1}{n}$, I will need at least $n$ boxes to cover the line segment.
 	\\[0.2in]I will define a function that takes in a radius, $r$, and outputs the least number of boxes of radius $r$ needed to cover the line segment. From the above examples it can be seen that this function is:
-	\[\mathcal{N}(r) = \frac{1}{r}\]
+	\[\mathcal{N}(r) = \frac{1}{r} \]
 	Another idea to think on. How to double the \textit{length} of the line segment? To double the length of the line segment, copy and paste it once, and append the copy onto the end of the original. 
 	\\[0.2in]So in other words, to double the length of the line segment, add 1, (or $2^1 - 1$ you could say,) extra copy.
 \end{example}
@@ -212,14 +216,14 @@ Where $c$ is a constant. It seems that it would be appropriate to call the $d$ i
 	\caption{Diameter of a set $S$ living in $\R^2$.}
 \end{figure}
 \begin{definition}[$\delta$-cover]
-	Let $S$ be a set living in $\R^n$. A set of sets $\{C_i\}$, (where each $C_i$ is itself a set) is said to be a $\delta$-\textit{cover} of $S$ if 
-	\[S \subseteq \bigcup C_i\]
-	and $|C_i| \le \delta$ for every $C_i$.\cite{falconer1} 
+	Let $S$ be a set living in $\R^n$. A set of sets $\mathcal{C}$, (where each element $C_i \in \mathcal{C}$ is itself a set), is said to be a $\delta$-\textit{cover} of $S$ if 
+	\[S \subseteq \bigcup_{C_i \in \mathcal{C}} C_i\]
+	and $|C_i| \le \delta$ for every $C_i \in \mathcal{C}$.\cite{falconer1} 
 \end{definition}
 \begin{definition}[Hausdorff measure]
 	Let $S$ be a set living in $\R^n$. First define the function
 	\[\mathcal{H}_{\delta}^{d}(S) = \inf \sum_{i=1}^{\infty} |C_i|^d\]
-	where the infimum is taken over each and every possible $\delta$-cover $\{C_i\}$ of the set $S$.\cite{falconer1}
+	where the infimum is taken over each and every possible $\delta$-cover $\mathcal{C}$ of the set $S$.\cite{falconer1}
 	\\[0.2in]In other words, this function picks the "tightest" $\delta$-cover of $S$ and sums the diameter of everything in the covering. The "tightest" $\delta$-covering is the $\delta$-covering with the smallest sum.
 	\\[0.2in]Define the \textit{Hausdorff measure} of the set $S$ to be the limit:
 	\[\lim_{\delta \rightarrow 0} \mathcal{H}_{\delta}^d(S) \]
@@ -236,121 +240,82 @@ Let's measure some objects using Hausdorff measure.
 	Let $S$ be a line segment living in $\R^2$. Say that
 	\[S = [0,1]\]
 	The length of $S$ is 1. Though now I would like to compute the measure of this set $S$ using Hausdorff measure. Recall the function
-	\[\mathcal{H}_{\delta}^d (S) = \inf \sum_{i=1}^{\infty} |C_i|^d\]
-	where the infimum is taken over every possible $\delta$-cover $\{C_i\}$ of $S$. Before sending $\delta$ to 0, for now let
+	\[\mathcal{H}_{\delta}^d (S) = \inf \sum_{C_i \in \mathcal{C}} |C_i|^d\]
+	where the infimum is taken over every countable $\delta$-cover, $C$, of $S$. Before sending $\delta$ to 0, for now let
 	\[\delta = \sfrac{1}{10} \qquad \text{and} \qquad d = 1\]
 	With this the function becomes
-	\[\mathcal{H}_{\sfrac{1}{10}}^{1} (S) = \inf \sum_{i=1}^{\infty} |C_i|\]
-	where the infimum is taken over every possible $\delta$-cover $\{C_i\}$ of $S$ where $\delta = \sfrac{1}{10}$.
+	\[\mathcal{H}_{\sfrac{1}{10}}^{1} (S) = \inf \sum_{C_i \in \mathcal{C}}^{} |C_i|\]
+	where the infimum is taken over each and every possible $\delta$-cover $\{C_i\}$ of $S$ where $\delta = \sfrac{1}{10}$.
 	\begin{figure}[h]
 		\includegraphics[scale=0.25]{img/c19.jpg}
 		\includegraphics[scale=0.26]{img/c18.jpg}
-		\caption{Two ways to cover the line segment [0,1] with a $\delta$-cover where $\delta = \sfrac{1}{10}$. Each orange circle represents an element $C_i \in \{C_i\}$ of the $\delta$-covering. Notice $[0,1] \subseteq \bigcup \{C_i\}$ and $|C_i| \le \sfrac{1}{10}$ for all $C_i$ (as required of a $\delta$-cover.) Let the top image show the cover $\{C_i\}$ and the bottom image show the cover $\{D_i\}$. It can be seen that}
+		\caption{Two ways to cover the line segment [0,1] with a $\delta$-cover where $\delta = \sfrac{1}{10}$. Each orange circle represents an element $C_i \in \mathcal{C}$ of the $\delta$-covering. Notice $[0,1] \subseteq \bigcup_{C_i \in \mathcal{C}} C_i$ and $|C_i| \le \sfrac{1}{10}$ for all $C_i$ (as required of a $\delta$-cover.) Let the top image show the cover $\mathcal{C}$ and the bottom image show the cover $\mathcal{D}$. It can be seen that}
 		\[\sum |C_i| < \sum |D_i|\]
-		(Roughly speaking because there are less balls in the top cover $\{C_i\}$ than the bottom cover $\{D_i\}$.) 
+		(Roughly speaking because there are less balls in the top cover $\mathcal{C}$ than the bottom cover $\mathcal{D}$.) 
 		\label{fig:figure5}
 	\end{figure}
-	\\[0.2in]For simplicity choose a cover like that of \ref{fig:figure5} (top image.) That is, arrange the cover such that there are 10 balls each with size $\sfrac{1}{10}$ covering the line segment side-by-side.
+	\\[0.2in]Before continuing, make the following assumption:
+	\\[0.2in]The infimum covering that the Hausdorff measure uses is to be a cover like that of \ref{fig:figure5} (top image.) That is, the cover is to be arranged such that there are 10 closed balls each with size $\sfrac{1}{10}$ covering the line segment side-by-side. I choose this specific cover \textit{without} proving it is indeed the cover with the infimum sum of diameters, simply because this leads to the expected answer for the measure of $S$.
 	\\[0.2in]For each ball in the cover
 	\[|C_i| = \sfrac{1}{10}\]
 	So we have
-	\[\mathcal{H}_{\sfrac{1}{10}}^{1} (S) = \sum_{i=1}^{10} |C_i| = \sum_{i=1}^{10} \sfrac{1}{10} = \left( \frac{1}{10} + \frac{1}{10} + \dots \right) = 1\]
+	\[\mathcal{H}_{\sfrac{1}{10}}^{1} (S) = \sum_{C_i \in \mathcal{C}} |C_i| = \sum_{C_i \in \mathcal{C}} \sfrac{1}{10} = \left( \frac{1}{10} + \frac{1}{10} + \dots \right) = 1\]
 	So this ``approximatation'' of Hausdorff measure, where $\delta = \sfrac{1}{10}$, agrees with intuitition.
 	\\[0.2in]Ok now try $\delta = \sfrac{1}{20}$ and consider the same configuration of balls for the $\delta$-cover of $S$. That is, arrange 20 balls side-by-side all of diameter $\sfrac{1}{20}$. Now we have that
-	\[\mathcal{H}_{\sfrac{1}{20}}^{1} (S) = \sum_{i=1}^{20} |C_i| = \sum_{i=1}^{20} \sfrac{1}{20} = \left( \frac{1}{20} + \frac{1}{20} + \dots \right) = 1\]
+	\[\mathcal{H}_{\sfrac{1}{20}}^{1} (S) = \sum_{C_i \in \mathcal{C}} |C_i| = \sum_{C_i \in \mathcal{C}} \sfrac{1}{20} = \left( \frac{1}{20} + \frac{1}{20} + \dots \right) = 1\]
 	So this ``approximatation'' of Hausdorff measure, where $\delta$ is even smaller, still agrees with intuitition.
-	Now using the same kind of covers as before, send $\delta$ to 0. To approach 0, it suffices to let
-	\[\delta = \frac{1}{N}\]
-	where $N \in \N$ and $\delta \rightarrow 0$ means $N \rightarrow \infty$.
-	\\[0.2in]So now observe the limit
-	\[\lim_{\delta \rightarrow 0} \mathcal{H}_{\delta}^{1} (S) = \lim_{\delta \rightarrow 0} \sum_{i=1}^{\sfrac{1}{\delta}} |C_i| = \lim_{\delta \rightarrow 0} \sum_{i=1}^{\sfrac{1}{\delta}} \delta\]
-	Now replace $\delta$ with its definition from above 
-	\[\lim_{\delta \rightarrow 0} \mathcal{H}_{\delta}^{1} (S) = \lim_{N \rightarrow \infty} \sum_{i=1}^{N} \frac{1}{N}\]
-	I know for any and all $N \in \N$ that
-	\[\sum_{i=1}^{N} \frac{1}{N} = 1\]
-	Thus we have that the Hausdorff measure of the set $S$ where $S = [0,1]$ is
-	\[\mathcal{H}^1 (S) = \lim_{\delta \rightarrow 0} \mathcal{H}_{\delta}^{1} (S) = \lim_{N \rightarrow \infty} \sum_{i=1}^{N} \frac{1}{N} = 1\]
+	Now using the same kind of covers as before, send $\delta$ to 0.
+	\\[0.2in]And with this the Hausdorff measure can be expressed as
+	\[\mathcal{H}^{1} (S) := \lim_{\delta \rightarrow 0} \mathcal{H}_{\delta}^{1} (S)\]
+	\[= \lim_{\delta \rightarrow 0} \sum_{C_i \in \mathcal{C}} \delta = \lim_{\delta \rightarrow 0} 1 = 1\]
 \end{example}
 Note that throughout the above compution of dimensionality, $d=1$ was given. To experiment with this $d$ value, the same conputation can be repeated but instead with a different value of $d$.
 \begin{example}[Line segment with $d = 2$]
 	Let $S$ be a line segment living in $\R^2$. Say that
 	\[S = [0,1]\]
-	Again the length of $S$ is 1. Beginning once again with the computation, construct the function
-	\[\mathcal{H}_{\delta}^d (S) = \inf \sum_{i=1}^{\infty} |C_i|^d\]
-	where the infimum is taken over every possible $\delta$-cover $\{C_i\}$ of $S$. But now in this case set
+	Again the length of $S$ is 1. Beginning once again with the computation, but now in this case set
 	\[\delta = \sfrac{1}{10} \qquad \text{and} \qquad d = 2\]
 	With these values we now have the function
-	\[\mathcal{H}_{\sfrac{1}{10}}^{2} (S) = \inf \sum_{i=1}^{\infty} |C_i|^2\]
-	where the infimum is taken over every possible $\delta$-cover $\{C_i\}$ of $S$ where $\delta = \sfrac{1}{10}$. And also now $d=2$.
-	\\[0.2in]Again we apply the previous covering, that is, an arrangement of balls such that every ball, each with size $\sfrac{1}{10}$, covers the line segment side-by-side.
-	\\[0.2in]For each ball within the cover
-	\[|C_i| = \sfrac{1}{10}\]
-	by construction. And so we have 
-	\[\mathcal{H}_{\sfrac{1}{10}}^{2} (S) = \sum_{i=1}^{10} |C_i|^2 = \sum_{i=1}^{10} \left( \sfrac{1}{10} \right)^2 = \left( \frac{1}{100} + \frac{1}{100} + \dots \right) = \frac{10}{100} = \frac{1}{10}\]
+	\[\mathcal{H}_{\sfrac{1}{10}}^{2} (S) = \inf \sum_{C_i \in \mathcal{C}} |C_i|^2\]
+	where the infimum is taken over every possible $\delta$-cover $\mathcal{C}$ of $S$ where $\delta = \sfrac{1}{10}$. And also now $d=2$.
+	\\[0.2in]Again we apply the previous covering, (again assuming it is the correct covering to use), that is, arrangement of balls such that every ball, each with size $\sfrac{1}{10}$, covers the line segment side-by-side.
+	\[\mathcal{H}_{\sfrac{1}{10}}^{2} (S) = \sum_{C_i \in \mathcal{C}} |C_i|^2 = \sum \left( \sfrac{1}{10} \right)^2 = \left( \frac{1}{100} + \frac{1}{100} + \dots \right) = \frac{10}{100} = \frac{1}{10}\]
 	Note that compared to the Hausdorff measurements of the first example (where $d = 1$) this is smaller.
 	\\[0.2in]Ok now try $\delta = \sfrac{1}{20}$ and consider the same configuration of balls for the $\delta$-cover of $S$. That is, arrange 20 balls side-by-side all of diameter $\sfrac{1}{20}$. Now we have that
-	\[\mathcal{H}_{\sfrac{1}{20}}^{2} (S) = \sum_{i=1}^{20} |C_i|^2 = \sum_{i=1}^{20} \left( \sfrac{1}{20} \right)^2 = \left( \frac{1}{400} + \frac{1}{400} + \dots \right) = \frac{20}{400} = \frac{1}{20}\]
+	\[\mathcal{H}_{\sfrac{1}{20}}^{2} (S) = \sum_{C_i \in \mathcal{C}} |C_i|^2 = \sum \left( \sfrac{1}{20} \right)^2 = \left( \frac{1}{400} + \frac{1}{400} + \dots \right) = \frac{20}{400} = \frac{1}{20}\]
 	Again this measurement computes to an even smaller value.
-	\\[0.2in]And now to send $\delta$ to 0. To approach 0, it suffices to let
-	\[\delta = \frac{1}{N}\]
-	where $N \in \N$ and $\delta \rightarrow 0$ means $N \rightarrow \infty$.
-	\\[0.2in]So now observe the limit
-	\[\lim_{\delta \rightarrow 0} \mathcal{H}_{\delta}^{2} (S) = \lim_{\delta \rightarrow 0} \sum_{i=1}^{\sfrac{1}{\delta}} |C_i|^2 = \lim_{\delta \rightarrow 0} \sum_{i=1}^{\sfrac{1}{\delta}} \delta^2\]
-	And replacing $\delta$ with its definition from above yeilds 
-	\[\lim_{\delta \rightarrow 0} \mathcal{H}_{\delta}^{2} (S) = \lim_{N \rightarrow \infty} \sum_{i=1}^{N} \left( \frac{1}{N} \right)^2\]
-	And I know that as
-	\[N \rightarrow \infty\]
-	it must be true that
-	\[\sum_{i=1}^{N} \left( \frac{1}{N} \right)^2 \rightarrow 0\]
+	And now to send $\delta$ to 0. And so we obtain
+	\[\lim_{\delta \rightarrow 0} \mathcal{H}_{\delta}^{2} (S) = \lim_{\delta \rightarrow 0} \sum_{C_i \in \mathcal{C}} |C_i|^2 = \lim_{\delta \rightarrow 0} \sum \delta^2 =  \lim_{\delta \rightarrow 0} 0 = 0\]
 	Thus we have that the Hausdorff measure when $d = 2$ of the set $S$ where $S = [0,1]$ is
-	\[\mathcal{H}^2 (S) = \lim_{\delta \rightarrow 0} \mathcal{H}_{\delta}^{2} (S) = \lim_{N \rightarrow \infty} \sum_{i=1}^{N} \left( \frac{1}{N}\right)^2 = 0\]
+	\[\lim_{\delta \rightarrow 0} \mathcal{H}_{\delta}^{2} (S) = 0\]
 	Well by increasing $d$ to 2, the computation has now yeilded an answer which disagrees with intuition.
 \end{example}
 \begin{example}[Line segment with generalized $d$]
-	Let $S$ be a line segment living in $\R^2$. Say that
-	\[S = [0,1]\]
-	Again the length of $S$ is 1. Beginning once again with the computation, construct the function
-	\[\mathcal{H}_{\delta}^d (S) = \inf \sum_{i=1}^{\infty} |C_i|^d\]
-	where the infimum is taken over every possible $\delta$-cover $\{C_i\}$ of $S$. But now in this case set
-	\[\delta = \sfrac{1}{10}\]
-	And now let $d \in \mathbb{R}$, that is, let $d$ be any real number. With these we compute the Hausdorff dimension by sending $\delta$ to 0.
-	\\[0.2in]To approach 0, it suffices to let
-	\[\delta = \frac{1}{N}\]
-	where $N \in \N$ and $\delta \rightarrow 0$ means $N \rightarrow \infty$.
-	\\[0.2in]So now observe the limit
-	\[\lim_{\delta \rightarrow 0} \mathcal{H}_{\delta}^{d} (S) = \lim_{\delta \rightarrow 0} \sum_{i=1}^{\sfrac{1}{\delta}} |C_i|^d = \lim_{\delta \rightarrow 0} \sum_{i=1}^{\sfrac{1}{\delta}} \delta^d\]
-	And replacing $\delta$ with its definition from above yeilds 
-	\[\lim_{\delta \rightarrow 0} \mathcal{H}_{\delta}^{2} (S) = \lim_{N \rightarrow \infty} \sum_{i=1}^{N} \left( \frac{1}{N} \right)^d\]
+	Now let $d \in \mathbb{R}^+$, that is, let $d$ be any positive real number. With these we compute the Hausdorff dimension by sending $\delta$ to 0.
+	\[\lim_{\delta \rightarrow 0} \mathcal{H}_{\delta}^{d} (S) = \lim_{\delta \rightarrow 0} \sum_{C_i \in \mathcal{C}} |C_i|^d = \lim_{\delta \rightarrow 0} \sum \delta^d\]
 	And now to analyze this expression for different values of $d$. 
 	\\[0.2in]Well as shown above, we have computed that if
 	\[d = 1\]
 	then
-	\[\lim_{N \rightarrow \infty} \sum_{i=1}^{N} \left( \frac{1}{N} \right)^d = 1\]
+	\[\lim_{\delta \rightarrow 0} \sum_{C_i \in \mathcal{C}} \delta^d = \lim_{\delta \rightarrow 0} \sum_{C_i \in \mathcal{C}} \delta^1 = 1\]
 	and also if
 	\[d = 2\]
 	then
-	\[\lim_{N \rightarrow \infty} \sum_{i=1}^{N} \left( \frac{1}{N} \right)^d = 0\]
-	in fact it can be seen that
-	\[d > 1 \implies \lim_{N \rightarrow \infty} \sum_{i=1}^{N} \left( \frac{1}{N} \right)^d = 0\]
-	And also 
-	\[d < 1 \implies \lim_{N \rightarrow \infty} \sum_{i=1}^{N} \left( \frac{1}{N} \right)^d = \infty\]
+	\[\lim_{\delta \rightarrow 0} \sum_{C_i \in \mathcal{C}} \delta^d = \lim_{\delta \rightarrow 0} \sum_{C_i \in \mathcal{C}} \delta^2 = 0\]
+	In fact it can be seen that
+	\[d > 1 \implies \lim_{\delta \rightarrow 0} \sum_{C_i \in \mathcal{C}} \delta^d = 0\]
+	\[d < 1 \implies \lim_{\delta \rightarrow 0} \sum_{C_i \in \mathcal{C}} \delta^d = \infty\]
 	And finally
-	\[d = 1 \implies \lim_{N \rightarrow \infty} \sum_{i=1}^{N} \left( \frac{1}{N} \right)^d = 1\]
+	\[d = 1 \implies \lim_{\delta \rightarrow 0} \sum_{C_i \in \mathcal{C}} \delta^d = 1\]
 	\begin{figure}[h]
-		\includegraphics[scale=0.25]{img/c22.jpg}
+		\includegraphics[scale=0.28]{img/c23.jpg}
 		\caption{Plot of $d$ vs. $\mathcal{H}^d (S)$}
 	\end{figure}
-	\subsection{Hausdorff Dimension}
-	In summary, the Hausdorff measure function $\mathcal{H}^d (S)$ as a function with respect to $d$ is a step function. To the left of some \textit{critical value}, $\mathcal{H}^d (S) = 0$ and to the right, $\mathcal{H}^d (S) = \infty$.
-	\\[0.2in]And so this critical value is denoted as the \textit{Hausdorff dimension} of a given object. And when the Hausdorff measure $\mathcal{H}^d (S)$ is computed with this critical value, it returns a accurate measurement of the object. To the left, it returns 0. To the right, it returns $\infty$.
-	The relationship between the value of $d$ chosen and the resulting Hausdorff measure can be represented as a plot:
+	\begin{definition}[Hausdorff Dimension]
+		In summary, the Hausdorff measure function $\mathcal{H}^d (S)$ as a function with respect to $d$ is a step function. To the left of some \textit{critical value}, $\mathcal{H}^d (S) = 0$ and to the right, $\mathcal{H}^d (S) = \infty$.
+		\\[0.2in]And so this critical value is denoted as the \textit{Hausdorff dimension} of a given object. And when the Hausdorff measure $\mathcal{H}^d (S)$ is computed with this critical value, it returns a accurate measurement of the object. To the left, it returns $\infty$. To the right, it returns 0.
+	\end{definition}
 \end{example}
-
-
-\begin{figure}[h]
-	\includegraphics[scale=0.25]{img/c21.jpg}
-	\caption{A visual of the sequence $\{\sfrac{1}{n}\}$. A sequence which in fact attains greater-than-zero dimension when considered by certain definitions of dimension.}
-\end{figure}
 \newpage
 \section{Cantor Set}
 	\begin{figure}[h]
@@ -396,7 +361,7 @@ Note that throughout the above compution of dimensionality, $d=1$ was given. To 
 		There Cantor Set has an infinite number of elements.
 	\end{corollary}
 	\begin{proof}
-		To show the Cantor Set has an infinite number of elements, it suffices to define an injective map between the natural numbers $\mathbb{N}$ and some (or all) elements of the Cantor Set $\mathcal{C}$, thus verifying the cardinality of $\mathcal{C}$ matches or excedes countably infinite number of elements within $\N$.
+		To show the Cantor Set has an infinite number of elements, it suffices to define an injective map between the natural numbers $\N$ and some (or all) elements of the Cantor Set $\mathcal{C}$, thus verifying the cardinality of $\mathcal{C}$ matches or excedes countably infinite number of elements within $\N$.
 	\end{proof}
 	\newpage
 	\begin{figure}[h]
@@ -412,7 +377,7 @@ Note that throughout the above compution of dimensionality, $d=1$ was given. To 
 		\caption{A set visualized in 2D with 10 iterations constructed the same way as the Cantor Set. However the $\frac{1}{3}$ in the Cantor Set definition is replaced with $\frac{4}{5}$ instead.}
 	\end{figure}
 \newpage
-\section{Dragon}
+\section{Dragons}
 
 \newpage
 \bibliography{citations}
