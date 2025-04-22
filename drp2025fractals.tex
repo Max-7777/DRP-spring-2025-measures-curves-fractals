@@ -307,15 +307,32 @@ Note that throughout the above compution of dimensionality, $d=1$ was given. To 
 	\[d < 1 \implies \lim_{\delta \rightarrow 0} \sum_{C_i \in \mathcal{C}} \delta^d = \infty\]
 	And finally
 	\[d = 1 \implies \lim_{\delta \rightarrow 0} \sum_{C_i \in \mathcal{C}} \delta^d = 1\]
-	\begin{figure}[h]
-		\includegraphics[scale=0.28]{img/c23.jpg}
-		\caption{Plot of $d$ vs. $\mathcal{H}^d (S)$}
-	\end{figure}
-	\begin{definition}[Hausdorff Dimension]
-		In summary, the Hausdorff measure function $\mathcal{H}^d (S)$ as a function with respect to $d$ is a step function. To the left of some \textit{critical value}, $\mathcal{H}^d (S) = 0$ and to the right, $\mathcal{H}^d (S) = \infty$.
-		\\[0.2in]And so this critical value is denoted as the \textit{Hausdorff dimension} of a given object. And when the Hausdorff measure $\mathcal{H}^d (S)$ is computed with this critical value, it returns a accurate measurement of the object. To the left, it returns $\infty$. To the right, it returns 0.
-	\end{definition}
 \end{example}
+\begin{figure}[h]
+	\includegraphics[scale=0.28]{img/c23.jpg}
+	\caption{Plot of $d$ vs. $\mathcal{H}^d (S)$}
+\end{figure}
+\begin{definition}[Hausdorff Dimension]
+	In summary, the Hausdorff measure function $\mathcal{H}^d (S)$ as a function with respect to $d$ is a step function. To the left of some \textit{critical value}, $\mathcal{H}^d (S) = 0$ and to the right, $\mathcal{H}^d (S) = \infty$.
+	\\[0.2in]And so this critical value is denoted as the \textit{Hausdorff dimension} of a given object. And when the Hausdorff measure $\mathcal{H}^d (S)$ is computed with this critical value, it returns a accurate measurement of the object. To the left, it returns $\infty$. To the right, it returns 0.
+\end{definition}
+
+\subsection{Essential properties of the s-dimentional Hausdorff-outer measure}
+\begin{corollary}
+	$\mathcal{H}^d(\emptyset) = 0$, where $\emptyset$ is the empty set.
+\end{corollary}
+
+\begin{corollary}
+	Let $X,Y \in \R^n$ such that $X \subset Y$, then
+	\[\mathcal{H}^d (X) \le\mathcal{H}^d (Y)\]
+\end{corollary}
+
+\begin{corollary}
+	Let $\{X_i\}$ be a collection of sets, then
+	\[\mathcal{H}^d \left( \bigcup_{i=0}^{\infty} X_i \right) \le \sum_{i=0}^{\infty} \mathcal{H}^d (X_i)\]
+\end{corollary}
+
+
 \newpage
 \section{Cantor Set}
 	\begin{figure}[h]
